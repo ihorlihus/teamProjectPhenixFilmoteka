@@ -2,20 +2,19 @@
 
 :root {
     --title-color: #ffffff;
-    --main-text-color: #212121;
-    --second-text-color: #757575;
+    --main-text-color: #000000;
+    --second-text-color: #FF6B08;
+    --card-info-text-color: #8C8C8C
     --main-bg-color: #ffffff;
-    --secondary-bg-color: #2f303a;
-    --accent-bg-color: #f5f4fa;
-    --button-color: #2196f3;
-    --hover-color: #2196f3;
+    --footer-bg-color: #F7F7F7;
+    --button-color: #FF6B01;
     --animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
     font-family: Roboto, sans-serif;
-    font-weight: normal;
-    font-size: 14px;
+    font-weight: 500;
+    font-size: 20px;
     letter-spacing: 0.03em;
     color: var(--main-text-color);
     background-color: var(--main-bg-color);
