@@ -1,2 +1,14 @@
-@import './common';
-@import './example';
+@import './utils/variables';
+@import './utils/reset';
+@import './utils/hidden';
+
+@import './components/container';
+@import './components/section';
+@import './components/modal';
+@import './components/modal-our-team';
+@import './components/button';
+
+@import './layout/header.scss';
+@import './layout/body.scss';
+@import './layout/body-lib.scss';
+@import './layout/footer.scss';

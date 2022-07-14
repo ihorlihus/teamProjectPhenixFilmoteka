@@ -1,0 +1,29 @@
+*,
+p,
+h1,
+h2,
+h3,
+h4,
+h6 li {
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    margin: 0;
+    padding: 0;
+}
+
+.list {
+    list-style: none;
+}
+
+.link {
+    text-decoration: none;
+}
+
+img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
