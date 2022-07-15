@@ -1,3 +1,5 @@
 import './js/example';
-import { fetchMovies } from './js/fetchMovies';
-fetchMovies();
+import './js/fetchTrendingMovies';
+import './js/fetchQueryMovies';
+
+
