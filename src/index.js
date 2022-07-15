@@ -1,1 +1,1 @@
-import './js/example';
+import './js/localstorage';
