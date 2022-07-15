@@ -1,0 +1,2 @@
+console.log("hi team!");(async()=>{try{return(await fetch("https://api.themoviedb.org/3/trending/all/day?api_key=ff98b74c6ada2972698b8eff6707845a")).json()}catch(e){throw Error(response.statusText)}})().then((e=>console.log(e)));(async e=>{try{const a=await fetch(`\n        https://api.themoviedb.org/3/search/movie?api_key=ff98b74c6ada2972698b8eff6707845a&language=en-US&page=1&include_adult=false&query=${e}\n            `);return await a.json()}catch(e){throw Error(response.statusText)}})().then((e=>console.log(e)));
+//# sourceMappingURL=index-lib.21b04b91.js.map
