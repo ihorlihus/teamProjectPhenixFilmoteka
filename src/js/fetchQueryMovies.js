@@ -24,4 +24,3 @@ const fetchQueryMovies = async (name) => {
         throw Error(response.statusText);
     }
 }
-// fetchQueryMovies().then(movies => console.log(movies.results));
