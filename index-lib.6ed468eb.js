@@ -1,0 +1,2 @@
+console.log("hi team!");let e;(async()=>{try{const e=await fetch("\n            https://api.themoviedb.org/3/genre/movie/list?api_key=ff98b74c6ada2972698b8eff6707845a&language=en-US\n        ");return await e.json()}catch(e){throw Error(response.statusText)}})().then((t=>{localStorage.setItem("genres",JSON.stringify(t.genres)),e=localStorage.getItem("genres")}));
+//# sourceMappingURL=index-lib.6ed468eb.js.map
