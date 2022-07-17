@@ -13,9 +13,9 @@ refs.form.addEventListener('submit', (event) => {
     event.preventDefault();
 
     const searchMovie = event.target.elements.navigation__input.value;
-    const srchMovie = searchMovie.trim();
+    const srchMovieTrim = searchMovie.trim();
 
-    fetchQueryMovies(srchMovie)
+    fetchQueryMovies(srchMovieTrim)
         .then(movies => {
             refs.gallery.innerHTML = createMovieCard(movies.results);
         })
