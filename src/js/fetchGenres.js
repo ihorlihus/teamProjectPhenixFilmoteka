@@ -13,14 +13,6 @@ export  const fetchGenres = async () => {
 export let localGenres;
 fetchGenres().then(genres => {
     localStorage.setItem("genres", JSON.stringify(genres.genres));
-    localGenres = localStorage.getItem("genres");
+    const saveGenres = localStorage.getItem("genres");
+    localGenres = JSON.parse(saveGenres);
 });
-// localGenres.map(({ name }) => name).join(', ');
-// export const getLocalGenres = () => {
-//     fetchGenres().then(genres => {
-//         localStorage.setItem("genres", JSON.stringify(genres.genres));
-//     });
-//     const savedGenres = localStorage.getItem("genres");
-//     const parsedGenres = JSON.parse(savedGenres);
-//     return parsedGenres;
-// }
