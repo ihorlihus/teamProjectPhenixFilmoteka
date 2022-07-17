@@ -1,8 +1,8 @@
-import {  localGenres } from "./fetchGenres";
+import "./fetchGenres";
 
 
 
-export const createMovieCard = (movies) => {
+const createMovieCard = (movies) => {
     return movies.map( 
         ({
             poster_path,
