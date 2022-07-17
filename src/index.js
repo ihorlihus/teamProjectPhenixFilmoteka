@@ -1,8 +1,8 @@
 import './js/example';
-import {fetchTrendingMovies} from './js/fetchTrendingMovies';
-import { fetchQueryMovies } from './js/fetchQueryMovies';
-import { createMovieCard } from './js/createMovieCard';
-import {refs} from './js/refs';
+import './js/fetchTrendingMovies';
+import './js/fetchQueryMovies';
+import './js/createMovieCard';
+import './js/refs';
 
 
 fetchTrendingMovies().then(movies => {
@@ -13,9 +13,9 @@ refs.form.addEventListener('submit', (event) => {
     event.preventDefault();
 
     const searchMovie = event.target.elements.navigation__input.value;
-    const srchMovieTrim = searchMovie.trim();
+    const searchMovieTrim = searchMovie.trim();
 
-    fetchQueryMovies(srchMovieTrim)
+    fetchQueryMovies(searchMovieTrim)
         .then(movies => {
             refs.gallery.innerHTML = createMovieCard(movies.results);
         })
