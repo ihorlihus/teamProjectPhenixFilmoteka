@@ -1,8 +1,8 @@
 
-import './fetchTrendingMovies';
-import './fetchQueryMovies';
-import './createMovieCard';
-import './refs';
+import {fetchTrendingMovies} from './fetchTrendingMovies';
+import {fetchQueryMovies} from './fetchQueryMovies';
+import {createMovieCard} from './createMovieCard';
+import {refs} from './refs';
 
 fetchTrendingMovies().then(movies => {
     refs.gallery.innerHTML = createMovieCard(movies.results);

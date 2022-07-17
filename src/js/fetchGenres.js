@@ -1,6 +1,6 @@
 
 
-const fetchGenres = async () => {
+export const fetchGenres = async () => {
     try {
         const response = await fetch(`
             https://api.themoviedb.org/3/genre/movie/list?api_key=ff98b74c6ada2972698b8eff6707845a&language=en-US
@@ -11,7 +11,7 @@ const fetchGenres = async () => {
     }
 }
 
-let localGenres;
+export let localGenres;
 
 fetchGenres().then(genres => {
     localStorage.setItem("genres", JSON.stringify(genres.genres));
