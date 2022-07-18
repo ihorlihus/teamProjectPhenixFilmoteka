@@ -1,5 +1,3 @@
-
-
 export const fetchGenres = async () => {
     try {
         const response = await fetch(`
