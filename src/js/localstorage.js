@@ -1,9 +1,9 @@
 import '../sass/test.scss';
 
-const list = document.querySelector('.film_list');
+const list = document.querySelector('.gallery');
 const modal = document.querySelector('.backdrop');
-const watchButton = document.querySelector('.js-watch');
-const queueButton = document.querySelector('.js-queue');
+const watchButton = document.querySelector('.button-watched_modal');
+const queueButton = document.querySelector('.button-queue_modal');
 queryApi();
 //  фетч -----------
 async function queryApi() {
@@ -30,13 +30,13 @@ async function showGallery(results) {
 function renderGallery(results) {
   return results
     .map(({ original_title, backdrop_path, id }) => {
-      return `<a class="link_card" href="" data-id="${id}"><div class="photo-card" width="100px">
-             <img class="photo-card-image" src="https://image.tmdb.org/t/p/w500/${backdrop_path}" alt=" " loading="lazy" />
-          <div class="info">
-            <p class="info-item">
-                 <b>${original_title}</b>
+      return `<div class="photo-card" width="100px" data-id="${id}" ><a class="link_card" href="" >
+             <img class="photo-card-image"  src="https://image.tmdb.org/t/p/w500/${backdrop_path}" alt=" " loading="lazy" />
+          <div class="info" >
+            <p class="info-item" ">
+                 <b ">${original_title}</b>
           
-         </div></div></a>`;
+         </div></a></div>`;
     })
     .join('');
 }
