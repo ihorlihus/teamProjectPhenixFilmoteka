@@ -1,0 +1,26 @@
+.container--padding {
+    padding-top: 20px;
+    padding-bottom: 40px;
+
+    @media screen and (min-width: 768px) {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+}
+
+.gallery-lib {
+    @media screen and (min-width: 768px) {
+     display: grid;
+     max-width: 704px;
+    grid-template-columns: repeat(2, minmax(336, 1fr));
+    grid-gap: 16px;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    }
+    
+    @media screen and (min-width: 1200px) {
+        max-width: 1138px;
+        grid-template-columns: repeat(3, minmax(347, 1fr));
+    }
+}
