@@ -1,7 +1,5 @@
 import {  localGenres } from "./fetchGenres";
 
-
-
 export const createMovieCard = (movies) => {
     return movies.map( 
         ({
@@ -11,33 +9,21 @@ export const createMovieCard = (movies) => {
             release_date,
             first_air_date,
             genre_ids,
+            // genres,
             vote_average,
             
         }) => {
             let moviesGenres;
-            if (genre_ids.length <= 3) {
-                moviesGenres = localGenres
-                    .filter(({ id }) => genre_ids.includes(id))
-                    .map(({ name }) => name)
-                    .join(', ');
+
+            let moviesGenresFindName = localGenres
+                .filter(({ id }) => genre_ids.includes(id))
+                .map(({ name }) => name)
+
+            if (moviesGenresFindName.length <= 2) {
+                moviesGenres = moviesGenresFindName.join(', ')
             } else {
-                const moreMoviesGenres = localGenres
-                    .slice(0, 2)
-                    .filter(({ id }) => genre_ids.includes(id))
-                    .map(({ name }) => name)
-                    .join(', ');
-                moviesGenres = moreMoviesGenres + ' Other';
+                moviesGenres = moviesGenresFindName.slice(0, 2).join(', ') + ' Other';
             }
-                
-            
-            // let genres = localGenres.map(({ name }) => name).join(', ')
-            // if (genres) {
-            //     console.log(genres);
-            //     // localGenres
-            //     //     // .filter(({ id }) => genre_ids.includes(id))
-            //     //     .map(({ name }) => name)
-            //     //     .join(', ');
-            // }
 
             return `
                 <li>
