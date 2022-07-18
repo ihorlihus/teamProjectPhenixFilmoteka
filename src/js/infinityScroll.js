@@ -1,3 +1,5 @@
+import { createMovieCard } from "./createMovieCard";
+
 const fetchOptions = {
     moviesPerPage: 20,
     currentPage: 1,
@@ -56,7 +58,7 @@ function drawMovies(data) {
         Notify.success(`Wow! We found for you${totalMovies} movies.`);
     };
     
-    createMovies(refs.gallery, movies);
+    createMovieCard(movies.results);
     
     setObserverOn();
 };
