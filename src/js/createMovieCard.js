@@ -1,7 +1,5 @@
 import {  localGenres } from "./fetchGenres";
 
-
-    
 export const createMovieCard = (movies) => {
     return movies.map( 
         ({
@@ -15,24 +13,25 @@ export const createMovieCard = (movies) => {
             vote_average,
             
         }) => {
-            
-            console.log(localGenres);
-            // let genres = localGenres.map(({ name }) => name).join(', ')
-            // if (genres) {
-            //     console.log(genres);
-            //     // localGenres
-            //     //     // .filter(({ id }) => genre_ids.includes(id))
-            //     //     .map(({ name }) => name)
-            //     //     .join(', ');
-            // }
+            let moviesGenres;
+
+            let moviesGenresFindName = localGenres
+                .filter(({ id }) => genre_ids.includes(id))
+                .map(({ name }) => name)
+
+            if (moviesGenresFindName.length <= 2) {
+                moviesGenres = moviesGenresFindName.join(', ')
+            } else {
+                moviesGenres = moviesGenresFindName.slice(0, 2).join(', ') + ' Other';
+            }
 
             return `
                 <li>
                     <a>
-                        <img src='https://image.tmdb.org/t/p/w500${poster_path}'/>
+                        <img src='https://image.tmdb.org/t/p/w500${poster_path}' alt='${title || name}' loading="lazy"/>
                         <p>${title || name}</p>
                         <div>
-                            <p>${genre_ids}</p>
+                            <p>${moviesGenres}</p>
                             <p>${(release_date || first_air_date).slice(0, 4)}</p>
                             <span>${vote_average}</span>
                         </div>
