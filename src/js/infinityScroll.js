@@ -1,3 +1,5 @@
+import {createMovieCard} from './createMovieCard';
+
 const fetchOptions = {
     moviesPerPage: 20,
     currentPage: 1,
@@ -13,24 +15,32 @@ const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             onLoadMore();
+            console.log('is intersecting');
         };
     });
 }, observerOptions);
-    
+
 function resetValues() {
-    refs.gallery.innerHTML = '';
     fetchOptions.currentPage = 1;
     setObserverOff();
 }
-    
-async function onLoadMore() {
-    try {
-        fetchOptions.currentPage += 1;
-        const fetchData = await fetchTrendingMovies(fetchOptions);
-        await drawMovies(fetchData);
-    } catch (error) {
-        Notify.failure(error);
-    };
+
+function onLoadMore() {
+    // try {
+    //     fetchOptions.currentPage += 1;
+    //     const fetchData = await fetchTrendingMovies(fetchOptions);
+    //     await drawMovies(fetchData);
+    // } catch (error) {
+    //     Notify.failure(error);
+    // };
+    fetchTrendingMovies().then(movies => {
+        try {
+            fetchOptions.currentPage += 1;
+            refs.gallery.insertAdjacentHTML('beforeend', createMovieCard(movies.results));
+        } catch (error) {
+            Notify.failure(error);
+        }
+    });
 }
     
 function setObserverOn() {
@@ -41,22 +51,22 @@ function setObserverOff() {
     observer.unobserve(document.querySelector('.scroll-check'));
 };
     
-function drawMovies(data) {
-    const movies = data.hits;
-    totalMovies = data.totalHits;
+// function drawMovies(data) {
+//     const movies = data.hits;
+//     totalMovies = data.totalHits;
     
-    if (!totalMovies) {
-        Notify.failure('Sorry, there are NO MOVIES matching your search query. Please try again.');
+//     if (!totalMovies) {
+//         Notify.failure('Sorry, there are NO MOVIES matching your search query. Please try again.');
             
-        refs.form.reset();
-        return;
-    };
+//         refs.form.reset();
+//         return;
+//     };
     
-    if (fetchOptions.currentPage === 1) {
-        Notify.success(`Wow! We found for you${totalMovies} movies.`);
-    };
+//     if (fetchOptions.currentPage === 1) {
+//         Notify.success(`Wow! We found for you${totalMovies} movies.`);
+//     };
     
-    createMovies(refs.gallery, movies);
+//     createMovieCard(movies.results);
     
-    setObserverOn();
-};
+//     setObserverOn();
+// };
