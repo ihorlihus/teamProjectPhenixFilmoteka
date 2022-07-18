@@ -9,7 +9,7 @@ export const createMovieCard = (movies) => {
             release_date,
             first_air_date,
             genre_ids,
-            // genres,
+            id,
             vote_average,
             
         }) => {
@@ -22,14 +22,14 @@ export const createMovieCard = (movies) => {
             if (moviesGenresFindName.length <= 2) {
                 moviesGenres = moviesGenresFindName.join(', ')
             } else {
-                moviesGenres = moviesGenresFindName.slice(0, 2).join(', ') + ' Other';
+                moviesGenres = moviesGenresFindName.slice(0, 2).join(', ') + ', Other';
             }
 
             return `
-                <li>
-                    <a>
-                        <img src='https://image.tmdb.org/t/p/w500${poster_path}' alt='${title || name}' loading="lazy"/>
-                        <p>${title || name}</p>
+                <li data-id="${id}">
+                    <a data-id="${id}">
+                        <img data-id="${id}" src='https://image.tmdb.org/t/p/w500${poster_path}' alt='${title || name}' loading="lazy"/>
+                        <p data-id="${id}">${title || name}</p>
                         <div>
                             <p>${moviesGenres}</p>
                             <p>${(release_date || first_air_date).slice(0, 4)}</p>

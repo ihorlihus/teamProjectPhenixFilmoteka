@@ -13,9 +13,13 @@ refs.form.addEventListener('submit', (event) => {
 
     const searchMovie = event.target.elements.navigation__input.value;
     const searchMovieTrim = searchMovie.trim();
-
-    fetchQueryMovies(searchMovieTrim)
-        .then(movies => {
-            refs.gallery.innerHTML = createMovieCard(movies.results);
-        })
+    if (searchMovieTrim === '') {
+        return;
+    } else {
+        fetchQueryMovies(searchMovieTrim)
+            .then(movies => {
+                refs.gallery.innerHTML = createMovieCard(movies.results);
+            })
+    }
+    
 })
