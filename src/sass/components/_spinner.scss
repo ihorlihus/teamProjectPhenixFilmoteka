@@ -1,12 +1,14 @@
 .loader {
+    display: block;
+    margin: 0 auto;
     width: 30px;
     height: 30px;
     border: 5px solid white;
     border-radius: 50%;
     border-top-color: tomato;
-    position: absolute;
+    // position: absolute;
     left: 50%;
-    top: 100%;
+    // top: 100%;
     transform: translate(-50%, -50%);
     animation: 1s spin infinite linear;
 }
@@ -17,9 +19,9 @@
 
 @keyframes spin {
     from {
-        transform: translate(-50%, -50%) rotate(0deg);
+        transform: translate(-50%) rotate(0deg);
     }
     to {
-        transform: translate(-50%, -50%) rotate(360deg);
+        transform: translate(-50%) rotate(360deg);
     }
 }

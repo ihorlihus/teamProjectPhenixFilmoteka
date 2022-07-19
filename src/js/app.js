@@ -5,8 +5,6 @@ import {createMovieCard} from './createMovieCard';
 import {refs} from './refs';
 import Spinner from './spinner';
 
-
-
 const spinner = new Spinner({
     loader: '.loader',
     hidden: true,
@@ -28,15 +26,8 @@ refs.form.addEventListener('submit', (event) => {
             }
                 spinner.show();
             }
-        )
-    
-    
+        )    
 })
 
-fetchTrendingMovies().then(movies => {
-    refs.gallery.innerHTML = createMovieCard(movies.results);
-    console.log(movies.results);
-    spinner.hide();
-});
 
 
