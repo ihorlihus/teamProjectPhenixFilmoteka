@@ -9,7 +9,7 @@ export const createMovieCard = (movies) => {
             release_date,
             first_air_date,
             genre_ids,
-            // genres,
+            id,
             vote_average,
             
         }) => {
@@ -22,18 +22,18 @@ export const createMovieCard = (movies) => {
             if (moviesGenresFindName.length <= 2) {
                 moviesGenres = moviesGenresFindName.join(', ')
             } else {
-                moviesGenres = moviesGenresFindName.slice(0, 2).join(', ') + ' Other';
+                moviesGenres = moviesGenresFindName.slice(0, 2).join(', ') + ', Other';
             }
 
             return `
-                <li>
-                    <a>
-                        <img src='https://image.tmdb.org/t/p/w500${poster_path}' alt='${title || name}' loading="lazy"/>
-                        <p>${title || name}</p>
-                        <div>
-                            <p>${moviesGenres}</p>
-                            <p>${(release_date || first_air_date).slice(0, 4)}</p>
-                            <span>${vote_average}</span>
+                <li data-id="${id}">
+                    <a class="card__link" data-id="${id}">
+                        <img class="card__img" data-id="${id}" src='https://image.tmdb.org/t/p/w500${poster_path}' alt='${title || name}' loading="lazy"/>
+                        <p class="card__title" data-id="${id}">${title || name}</p>
+                        <div class="card__inform" data-id="${id}">
+                            <p class="card__genres">${moviesGenres}</p>
+                            <p class="card__date">${(release_date || first_air_date).slice(0, 4)}</p>
+                            <span class="card__vote is-hidden">${vote_average}</span>
                         </div>
                     </a>
                 </li>
