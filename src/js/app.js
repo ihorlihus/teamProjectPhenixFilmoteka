@@ -5,9 +5,7 @@ import {createMovieCard} from './createMovieCard';
 import {refs} from './refs';
 import Spinner from './spinner';
 
-fetchTrendingMovies().then(movies => {
-    refs.gallery.innerHTML = createMovieCard(movies.results);
-});
+
 
 const spinner = new Spinner({
     loader: '.loader',
@@ -22,15 +20,23 @@ refs.form.addEventListener('submit', (event) => {
 
     fetchQueryMovies(searchMovieTrim)
         .then(movies => {
-            refs.gallery.innerHTML = createMovieCard(movies.results);
-            spinner.show();
-        })
+            if (searchMovieTrim === '' || movies.results.length === 0) {
+                window.alert('Please write correct name! ');
+                return;
+            } else {
+                refs.gallery.innerHTML = createMovieCard(movies.results);
+            }
+                spinner.show();
+            }
+        )
+    
+    
 })
 
 fetchTrendingMovies().then(movies => {
+    refs.gallery.innerHTML = createMovieCard(movies.results);
     console.log(movies.results);
     spinner.hide();
 });
-
 
 
