@@ -5,23 +5,30 @@ import { refs } from './refs';
 import Spinner from './spinner';
 
 const spinner = new Spinner({
-  loader: '.loader',
-  hidden: true,
-});
 
-refs.form.addEventListener('submit', event => {
-  event.preventDefault();
+    loader: '.loader',
+    hidden: true,
+})
 
-  const searchMovie = event.target.elements.navigation__input.value;
-  const searchMovieTrim = searchMovie.trim();
+refs.form.addEventListener('submit', (event) => {
+    event.preventDefault();
 
-  fetchQueryMovies(searchMovieTrim).then(movies => {
-    if (searchMovieTrim === '' || movies.results.length === 0) {
-      window.alert('Please write correct name! ');
-      return;
-    } else {
-      refs.gallery.innerHTML = createMovieCard(movies.results);
-    }
-    spinner.show();
-  });
-});
+    const searchMovie = event.target.elements.navigation__input.value;
+    const searchMovieTrim = searchMovie.trim();
+
+    fetchQueryMovies(searchMovieTrim)
+        .then(movies => {
+            if (searchMovieTrim === '' || movies.results.length === 0) {
+                refs.notificate.classList.remove('visually-hidden');
+                
+            } else {
+                refs.gallery.innerHTML = createMovieCard(movies.results);
+            }
+                spinner.show();
+            }
+        )    
+})
+
+
+
+
