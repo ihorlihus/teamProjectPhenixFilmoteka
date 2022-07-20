@@ -10,14 +10,9 @@ export const fetchGenres = async () => {
 }
 
 export let localGenres;
-if (!localStorage.getItem('genres')) {
-    fetchGenres().then(genres => {
+
+fetchGenres().then(genres => {
     localStorage.setItem("genres", JSON.stringify(genres.genres));
     const saveGenres = localStorage.getItem("genres");
     localGenres = JSON.parse(saveGenres);
 });
-} else {
-    return;
-}
-
-
