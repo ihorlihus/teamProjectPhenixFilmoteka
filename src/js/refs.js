@@ -6,4 +6,5 @@ export const refs = {
   queueButton: document.querySelector('.button-queue__modal'),
   modal: document.querySelector('.modal__content'),
   closeModalBtn: document.querySelector('.modal-close'),
+  buttonsContainer: document.querySelector('.buttons-modal'),
 };
