@@ -25,9 +25,9 @@ export const createMovieCard = movies => {
           moviesGenres =
             moviesGenresFindName.slice(0, 2).join(', ') + ', Other';
         }
-
+        const voteAverageToString = vote_average.toString();
         return `
-                <li data-id="${id}">
+                <li class="card__item" data-id="${id}">
                     <a class="card card__link" data-id="${id}">
                         <img class="card__img" data-id="${id}" src='https://image.tmdb.org/t/p/w500${poster_path}' alt='${
           title || name
@@ -37,10 +37,12 @@ export const createMovieCard = movies => {
         }</p>
                         <div class="card__inform" data-id="${id}">
                             <p class="card__genres">${moviesGenres}</p>
-                            <p class="card__date">${(
+                            <p class="card__date">
+                              <span></span>
+                            ${(
                               release_date || first_air_date
                             ).slice(0, 4)}</p>
-                            <span class="card__vote is-hidden">${vote_average}</span>
+                            <span class="card__vote">${voteAverageToString.slice(0,3)}</span>
                         </div>
                     </a>
                 </li>

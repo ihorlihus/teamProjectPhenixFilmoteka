@@ -19,8 +19,8 @@ refs.form.addEventListener('submit', (event) => {
     fetchQueryMovies(searchMovieTrim)
         .then(movies => {
             if (searchMovieTrim === '' || movies.results.length === 0) {
-                window.alert('Please write correct name! ');
-                return;
+                refs.notificate.classList.remove('visually-hidden');
+                
             } else {
                 refs.gallery.innerHTML = createMovieCard(movies.results);
             }
