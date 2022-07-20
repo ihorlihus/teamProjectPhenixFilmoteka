@@ -1,4 +1,9 @@
 export const refs = {
-    gallery: document.querySelector('.gallery'),
-    form: document.querySelector('.navigation__form'),
-}
+  gallery: document.querySelector('.gallery'),
+  form: document.querySelector('.navigation__form'),
+  backdrop: document.querySelector('.js-backdrop'),
+  watchButton: document.querySelector('.button-watched__modal'),
+  queueButton: document.querySelector('.button-queue__modal'),
+  modal: document.querySelector('.modal__content'),
+  closeModalBtn: document.querySelector('.modal-close'),
+};
