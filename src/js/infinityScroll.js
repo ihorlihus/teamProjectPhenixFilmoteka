@@ -4,9 +4,13 @@ import { fetchTrendingMovies } from './fetchTrendingMovies';
 import {refs} from './refs';
 import Spinner from './spinner';
 
-let fetchOptions = {
+export let fetchOptions = {
     currentPage: 1,
 };
+
+export const resetPage = () => {
+    fetchOptions.currentPage = 1;
+}
 
 const observerOptions = {
     rootMargin: '0px',
@@ -40,6 +44,12 @@ function onLoadMore() {
     
     fetchTrendingMovies().then(movies => {
         try {
+            if(fetchOptions.currentPage === movies.total_pages) {
+                refs.gallery.insertAdjacentHTML('beforeend', createMovieCard(movies.results));
+                window.alert('Sorry this is the last page, we do not have any movies for you :(');
+                setObserverOff();
+                return ;
+            }
             fetchOptions.currentPage += 1;
             refs.gallery.insertAdjacentHTML('beforeend', createMovieCard(movies.results));
             spinner.hide();
@@ -50,6 +60,12 @@ function onLoadMore() {
 
     fetchQueryMovies().then(movies => {
         try {
+            if(fetchOptions.currentPage === movies.total_pages) {
+                refs.gallery.insertAdjacentHTML('beforeend', createMovieCard(movies.results));
+                window.alert('Sorry this is the last page, we do not have any movies for you :(');
+                setObserverOff();
+                return;
+            }
             fetchOptions.currentPage += 1;
             refs.gallery.insertAdjacentHTML('beforeend', createMovieCard(movies.results));
             spinner.hide();     

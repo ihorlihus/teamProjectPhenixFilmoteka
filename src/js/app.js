@@ -3,6 +3,7 @@ import {fetchTrendingMovies} from './fetchTrendingMovies';
 import {fetchQueryMovies} from './fetchQueryMovies';
 import {createMovieCard} from './createMovieCard';
 import {refs} from './refs';
+import { resetPage } from './infinityScroll';
 import Spinner from './spinner';
 
 const spinner = new Spinner({
@@ -16,6 +17,8 @@ refs.form.addEventListener('submit', (event) => {
     const searchMovie = event.target.elements.navigation__input.value;
     const searchMovieTrim = searchMovie.trim();
 
+    resetPage();
+    
     fetchQueryMovies(searchMovieTrim)
         .then(movies => {
             if (searchMovieTrim === '' || movies.results.length === 0) {
