@@ -74,24 +74,3 @@ function onLoadMore() {
         }
     });
 }
-    
-    
-// function drawMovies(data) {
-//     const movies = data.hits;
-//     totalMovies = data.totalHits;
-    
-//     if (!totalMovies) {
-//         Notify.failure('Sorry, there are NO MOVIES matching your search query. Please try again.');
-            
-//         refs.form.reset();
-//         return;
-//     };
-    
-//     if (fetchOptions.currentPage === 1) {
-//         Notify.success(`Wow! We found for you${totalMovies} movies.`);
-//     };
-    
-//     createMovieCard(movies.results);
-    
-//     setObserverOn();
-// };
