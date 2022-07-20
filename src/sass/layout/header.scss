@@ -134,9 +134,20 @@
 
 .navigation__container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+    padding-bottom: 45px;
 }
-
+.navigation__form{
+    margin-bottom: 16px;
+    @media screen and (min-width: 768px){
+        margin-bottom: 20px;
+    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .navigation__input {
     border: none;
     border-bottom: 0.5px solid #FFFFFF;
@@ -171,4 +182,16 @@
 .input__icon {
     fill: currentColor;
 
+}
+
+.navigation__notificate{
+    color:#FF001B;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.14;
+    display: inline;
+    align-items: center;
+    @media screen and (max-width: 767px) {
+        max-width: 280px;
+    }
 }
