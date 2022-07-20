@@ -120,3 +120,4 @@ function addToWatchStorage(cardObject) {
 function addToQueueStorage(cardObject) {
   localStorage.setItem('Queue', JSON.stringify(cardObject));
 }
+
