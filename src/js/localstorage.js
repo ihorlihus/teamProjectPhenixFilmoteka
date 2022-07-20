@@ -102,9 +102,6 @@ async function request(id) {
   }
 }
 
-// передавати в об'єкт значення запиту
-let cardObject = null;
-const watchArr = [];
 refs.gallery.addEventListener('click', e => {
   e.preventDefault();
   request(e.target.dataset.id)
@@ -120,26 +117,126 @@ refs.gallery.addEventListener('click', e => {
       console.log(error);
     });
 });
+refs.gallery.addEventListener('click', e => {
+  e.preventDefault();
+  request(e.target.dataset.id)
+    .then(data => {
+      cardObject = data; //add const
+      refs.modal.innerHTML = '';
+      checkStorage(); //add func
+      watchButtDisOrEn(); //add func
+      onOpenModal();
+      refs.modal.insertAdjacentHTML('afterbegin', createFilmCard(data));
+      refs.backdrop.addEventListener('click', onBackdropClick);
+      refs.buttonsContainer.addEventListener('click', addToStorage); // add this
+    })
+    .catch(error => {
+      console.log(error);
+    });
+});
 
+function addToWatchStorage(cardObject) {
+  console.log(cardObject);
+  localStorage.setItem('Watch', JSON.stringify(cardObject));
+}
+function addToQueueStorage(cardObject) {
+  localStorage.setItem('Queue', JSON.stringify(cardObject));
+}
+// Мій код
+let cardObject;
+let watchArr = [];
+let queueArr = [];
+function checkStorage() {
+  if (localStorage.getItem('Watch')) {
+    watchArr = JSON.parse(localStorage.getItem('Watch'));
+  }
+  if (localStorage.getItem('Queue')) {
+    queueArr = JSON.parse(localStorage.getItem('Queue'));
+  }
+}
 function addToStorage(e) {
-  console.dir(e.target);
-  // змінити класс кнопок
   if (e.target.className === 'button-watched_modal') {
     addToWatchStorage();
+    return;
   }
   if (e.target.className === 'button-queue_modal') {
     addToQueueStorage();
-  } else {
-    console.log('мимо');
+    return;
+  }
+}
+function watchButtDisOrEn() {
+  toAddWatchButt();
+  toAddQueueButt();
+  for (const storage of watchArr) {
+    if (storage.id === cardObject.id) {
+      toRemoveWatchButt();
+      break;
+    }
+  }
+  for (const storage of queueArr) {
+    if (storage.id === cardObject.id) {
+      toRemoveQueueButt();
+      break;
+    }
+  }
+}
+///watch-Fn
+function addToWatchStorage() {
+  if (refs.watchButton.textContent === 'ADD TO WATCHED') {
+    toRemoveWatchButt();
+    watchArr.push(cardObject);
+    localStorage.setItem('Watch', JSON.stringify(watchArr));
+    return;
+  }
+  if (refs.watchButton.textContent === 'REMOVE FROM WATCH') {
+    toAddWatchButt();
+    for (const storage of watchArr) {
+      if (storage.id === cardObject.id) {
+        const removeIndex = watchArr.indexOf(storage);
+        const removedWatchArr = watchArr.splice(removeIndex, 1);
+        localStorage.setItem('Watch', JSON.stringify(watchArr));
+      }
+    }
   }
 }
 
-function addToQueueStorage() {
-  localStorage.setItem('Queue', JSON.stringify(cardObject));
+function toRemoveWatchButt() {
+  refs.watchButton.style.backgroundColor = 'red';
+  refs.watchButton.textContent = 'REMOVE FROM WATCH';
 }
-function addToWatchStorage(watchArr) {
-  watchArr.push(cardObject);
-  localStorage.setItem('Watch', JSON.stringify(watchArr));
+
+function toAddWatchButt() {
+  refs.watchButton.style.backgroundColor = '#FF6B01';
+  refs.watchButton.textContent = 'ADD TO WATCHED';
+}
+////Queue-Fn
+function addToQueueStorage() {
+  if (refs.queueButton.textContent === 'ADD TO QUEUE') {
+    toRemoveQueueButt();
+    queueArr.push(cardObject);
+    localStorage.setItem('Queue', JSON.stringify(queueArr));
+    return;
+  }
+  if (refs.queueButton.textContent === 'REMOVE FROM QUEUE') {
+    toAddQueueButt();
+    for (const storage of queueArr) {
+      if (storage.id === cardObject.id) {
+        const removeIndex = queueArr.indexOf(storage);
+        const removedWatchArr = queueArr.splice(removeIndex, 1);
+        localStorage.setItem('Queue', JSON.stringify(queueArr));
+      }
+    }
+  }
+}
+
+function toRemoveQueueButt() {
+  refs.queueButton.style.backgroundColor = 'pink';
+  refs.queueButton.textContent = 'REMOVE FROM QUEUE';
+}
+
+function toAddQueueButt() {
+  refs.queueButton.style.backgroundColor = 'white';
+  refs.queueButton.textContent = 'ADD TO QUEUE';
 }
 
 // ???????//////////////////////////

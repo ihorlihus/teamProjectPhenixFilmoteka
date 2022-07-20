@@ -1,4 +1,3 @@
-
 .backdrop {
     position: fixed;
     top: 0;
@@ -24,8 +23,12 @@
     transition: transform 200ms ease-in-out;
 
     padding: 42px 20px 46px 20px;
+<<<<<<< HEAD
     max-width: 580px;
     max-height: 740px;
+=======
+    max-width: 280px;
+>>>>>>> 0d34f2849d9f82586a97164a0b04e348e306e8f0
 
     background-color: #ffffff;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -59,7 +62,7 @@
     pointer-events: initial;
 }
 
-.card-container {
+.container-modal {
     display: grid;
 }
 
@@ -70,7 +73,7 @@
     margin-bottom: 20px;
 }
 
-.img-card {
+.img-modal {
     margin-bottom: 20px;
     height: 240px;
 }
@@ -80,18 +83,22 @@
     font-size: 13px;
     margin-bottom: 20px;
     text-align: left;
-    line-height: 1.3;
+    line-height: 1.5;
     font-weight: 500;
 }
 
-.title-about {
+.table__text {
+    color: #8C8C8C;
+}
+
+.title-about__modal {
     letter-spacing: 0.01em;
     margin-bottom: 8px;
     font-size: 13px;
     line-height: 1.3;
 }
 
-.about-text {
+.about-text__modal {
     margin-bottom: 20px;
     font-size: 12px;
     line-height: 1.7;
@@ -99,16 +106,13 @@
     overflow: auto;
 }
 
-.text-table {
-    color: #8C8C8C;
-}
 
-.buttons-container {
+.buttons-modal {
     display: flex;
     justify-content: space-around;
 }
 
-.button-watched_modal {
+.button-watched__modal {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -122,7 +126,7 @@
     line-height: 1.3;
 }
 
-.button-queue_modal {
+.button-queue__modal {
     display: inline-flex;
     align-items: center;
     justify-content: center;
