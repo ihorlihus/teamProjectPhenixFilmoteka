@@ -1,26 +1,5 @@
 import { refs } from './refs';
 import { cardObject } from './renderOpenModal';
-// export { checkStorage, addToStorage, watchButtDisOrEn, cardObject };
-// refs.gallery.addEventListener('click', e => {
-//   e.preventDefault();
-//   request(e.target.dataset.id)
-//     .then(data => {
-//       cardObject = data; //add const
-//       refs.modal.innerHTML = '';
-//       checkStorage(); //add func
-//       watchButtDisOrEn(); //add func
-//       onOpenModal();
-//       refs.modal.insertAdjacentHTML('afterbegin', createFilmCard(data));
-//       refs.backdrop.addEventListener('click', onBackdropClick);
-//       refs.buttonsContainer.addEventListener('click', addToStorage); // add this
-//     })
-//     .catch(error => {
-//       console.log(error);
-//     });
-// });
-
-//
-// export let cardObject = {};
 
 let watchArr = [];
 let queueArr = [];
