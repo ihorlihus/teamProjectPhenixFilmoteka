@@ -3,6 +3,7 @@ import { fetchQueryMovies } from './fetchQueryMovies';
 import { createMovieCard } from './createMovieCard';
 import { refs } from './refs';
 import Spinner from './spinner';
+import { resetPage } from './infinityScroll';
 
 const spinner = new Spinner({
 
@@ -16,6 +17,9 @@ refs.form.addEventListener('submit', (event) => {
     let searchMovie = event.target.elements.navigation__input.value;
     const searchMovieTrim = searchMovie.trim();
 
+    resetPage();
+    spinner.show();
+
     fetchQueryMovies(searchMovieTrim)
         .then(movies => {
             if (searchMovieTrim === '' || movies.results.length === 0) {
@@ -28,7 +32,7 @@ refs.form.addEventListener('submit', (event) => {
             } else {
                 refs.gallery.innerHTML = createMovieCard(movies.results);
             }
-                spinner.show();
+                spinner.hide();
             }
         )    
 })
