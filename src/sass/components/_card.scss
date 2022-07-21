@@ -5,13 +5,15 @@
     margin-bottom: 20px;
 
 }
-.card__item:hover .card__img,.card__item:focus .card__img{
+.card__item:hover .card__img,
+.card__item:focus .card__img{
     border-radius: 5px;
     box-shadow: 10px 23px 41px 0px rgba(255, 107, 8, 0.71);
         -webkit-box-shadow: 10px 23px 41px 0px rgba(255, 107, 8, 0.71);
         -moz-box-shadow: 10px 23px 41px 0px rgba(255, 107, 8, 0.71);
-    transform: scale(1.02)
+    transform: scale(1.02);
 }
+
 .card__img{
     margin-bottom: 12px;
     border-radius: 5px;

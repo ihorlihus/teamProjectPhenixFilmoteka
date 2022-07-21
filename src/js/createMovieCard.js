@@ -38,7 +38,7 @@ export const createMovieCard = movies => {
                         <div class="card__inform" data-id="${id}">
                             <p class="card__genres">${moviesGenres}</p>
                             <p class="card__date">
-                              <span></span>
+                              <span></span>| 
                             ${(
                               release_date || first_air_date
                             ).slice(0, 4)}</p>

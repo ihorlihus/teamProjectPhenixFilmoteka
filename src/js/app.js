@@ -23,10 +23,10 @@ refs.form.addEventListener('submit', (event) => {
     fetchQueryMovies(searchMovieTrim)
         .then(movies => {
             if (searchMovieTrim === '' || movies.results.length === 0) {
-                refs.notificate.classList.remove('visually-hidden');
+                refs.notificate.classList.remove('navigation__notificate-hidden');
                 document.getElementById("myForm").reset();
                 setTimeout(() => {
-                    refs.notificate.classList.add('visually-hidden')
+                    refs.notificate.classList.add('navigation__notificate-hidden')
                 },2500)
                 
             } else {
