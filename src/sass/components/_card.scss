@@ -1,3 +1,61 @@
 .card{
     cursor: pointer;
 }
+.card__item{
+    margin-bottom: 20px;
+
+}
+.card__item:hover .card__img,.card__item:focus .card__img{
+    border-radius: 5px;
+    box-shadow: 10px 23px 41px 0px rgba(255, 107, 8, 0.71);
+        -webkit-box-shadow: 10px 23px 41px 0px rgba(255, 107, 8, 0.71);
+        -moz-box-shadow: 10px 23px 41px 0px rgba(255, 107, 8, 0.71);
+    transform: scale(1.02)
+}
+.card__img{
+    margin-bottom: 12px;
+    border-radius: 5px;
+}
+.card__inform{
+    display: flex;
+}
+.card__title
+{
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    text-transform: uppercase;
+    color: #000000;
+
+    @media screen and (min-width: 1200px){
+        font-size: 20px;
+        line-height: 24px;
+    }
+}
+
+.card__genres,.card__date{
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 16px;
+
+        @media screen and (min-width: 1200px) {
+            font-size: 20px;
+            line-height: 24px;
+        }
+    
+        color: #FF6B08;
+}
+.card__date{
+    margin-left: 2px;
+}
+.card__vote{
+    padding: 3px 12px;
+    margin-left: 8px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    background: #FF6B01;
+    border-radius: 5px;
+
+    color:#fff;
+}

@@ -51,19 +51,21 @@ function onLoadMore() {
     }
   });
 
-  fetchQueryMovies().then(movies => {
-    try {
-      fetchOptions.currentPage += 1;
-      refs.gallery.insertAdjacentHTML(
-        'beforeend',
-        createMovieCard(movies.results)
-      );
-      spinner.hide();
-    } catch (error) {
-      console.log(error);
-    }
-  });
+
+    // fetchQueryMovies().then(movies => {
+    //     try {
+    //         fetchOptions.currentPage += 1;
+    //         refs.gallery.insertAdjacentHTML('beforeend', createMovieCard(movies.results));
+    //         spinner.hide();     
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // });
 }
+    
+    
+
+
 
 // function drawMovies(data) {
 //     const movies = data.hits;
