@@ -13,13 +13,17 @@ const spinner = new Spinner({
 refs.form.addEventListener('submit', (event) => {
     event.preventDefault();
 
-    const searchMovie = event.target.elements.navigation__input.value;
+    let searchMovie = event.target.elements.navigation__input.value;
     const searchMovieTrim = searchMovie.trim();
 
     fetchQueryMovies(searchMovieTrim)
         .then(movies => {
             if (searchMovieTrim === '' || movies.results.length === 0) {
                 refs.notificate.classList.remove('visually-hidden');
+                document.getElementById("myForm").reset();
+                setTimeout(() => {
+                    refs.notificate.classList.add('visually-hidden')
+                },2500)
                 
             } else {
                 refs.gallery.innerHTML = createMovieCard(movies.results);

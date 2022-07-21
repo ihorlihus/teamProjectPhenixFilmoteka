@@ -42,7 +42,7 @@ export const createMovieCard = movies => {
                             ${(
                               release_date || first_air_date
                             ).slice(0, 4)}</p>
-                            <span class="card__vote">${voteAverageToString.slice(0,3)}</span>
+                            <span class="card__vote visually-hidden">${voteAverageToString.slice(0,3)}</span>
                         </div>
                     </a>
                 </li>
