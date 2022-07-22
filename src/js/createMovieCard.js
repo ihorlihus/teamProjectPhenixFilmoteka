@@ -13,18 +13,19 @@ export const createMovieCard = movies => {
         id,
         vote_average,
       }) => {
-        let moviesGenres;
+        let moviesGenres 
+        //   localGenres.filter(({ id }) => genre_ids.includes(id)).map(({ name }) => name);
+        // console.log(moviesGenres);
+        // let moviesGenresFindName = localGenres
+        //   .filter(({ id }) => genre_ids.includes(id))
+        //   .map(({ name }) => name);
 
-        let moviesGenresFindName = localGenres
-          .filter(({ id }) => genre_ids.includes(id))
-          .map(({ name }) => name);
-
-        if (moviesGenresFindName.length <= 2) {
-          moviesGenres = moviesGenresFindName.join(', ');
-        } else {
-          moviesGenres =
-            moviesGenresFindName.slice(0, 2).join(', ') + ', Other';
-        }
+        // if (moviesGenresFindName.length <= 2) {
+        //   moviesGenres = moviesGenresFindName.join(', ');
+        // } else {
+        //   moviesGenres =
+        //     moviesGenresFindName.slice(0, 2).join(', ') + ', Other';
+        // }
         const voteAverageToString = vote_average.toString();
         return `
                 <li class="card__item" data-id="${id}">

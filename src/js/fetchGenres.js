@@ -13,19 +13,19 @@ export let localGenres;
 
 
 
-fetchGenres().then(genres => {
-    localStorage.setItem("genres", JSON.stringify(genres.genres));
-    const saveGenres = localStorage.getItem("genres");
-    localGenres = JSON.parse(saveGenres);
-});
+// fetchGenres().then(genres => {
+//     localStorage.setItem("genres", JSON.stringify(genres.genres));
+//     const saveGenres = localStorage.getItem("genres");
+//     localGenres = JSON.parse(saveGenres);
+// });
 
-// if (localStorage.getItem("genres")) {
-//     return;
-// } else {
-//     fetchGenres().then(genres => {
-//         localStorage.setItem("genres", JSON.stringify(genres.genres));
-//         const saveGenres = localStorage.getItem("genres");
-//         localGenres = JSON.parse(saveGenres);
-//     });
+if (localStorage.getItem("genres")) {
+    return;
+} else {
+    fetchGenres().then(genres => {
+        localStorage.setItem("genres", JSON.stringify(genres.genres));
+        const saveGenres = localStorage.getItem("genres");
+        localGenres = JSON.parse(saveGenres);
+    });
     
-// }
+}

@@ -11,31 +11,10 @@ const spinner = new Spinner({
     hidden: true,
 })
 
-refs.form.addEventListener('submit', (event) => {
-    event.preventDefault();
+// fetchTrendingMovies().then(movies => {
+//     refs.gallery.innerHTML = createMovieCard(movies.results);
+// });
 
-    let searchMovie = event.target.elements.navigation__input.value;
-    const searchMovieTrim = searchMovie.trim();
-
-    resetPage();
-    spinner.show();
-
-    fetchQueryMovies(searchMovieTrim)
-        .then(movies => {
-            if (searchMovieTrim === '' || movies.results.length === 0) {
-                refs.notificate.classList.remove('navigation__notificate-hidden');
-                document.getElementById("myForm").reset();
-                setTimeout(() => {
-                    refs.notificate.classList.add('navigation__notificate-hidden')
-                },2500)
-                
-            } else {
-                refs.gallery.innerHTML = createMovieCard(movies.results);
-            }
-                spinner.hide();
-            }
-        )    
-})
 
 
 
