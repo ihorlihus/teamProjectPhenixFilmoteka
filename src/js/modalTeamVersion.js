@@ -1,63 +1,33 @@
-// const linkRef = document.querySelector('.modal-link');
-// const modalRef = document.querySelector('.modal-team');
 
-// linkRef.addEventListener('click', modalOpen);
-
-// function modalOpen(event) {
-//     event.preventDefoult()
-//     modalRef.classList.remove('.visually-hidden');
-// }
-
-// function modalClose(event) {
-//     event.preventDefoult()
-//     window.addEventListener('keydown', onEscape)
-//     modalRef.classList.add('.visually-hidden');
-// }
-
-// function onClick(e) {
-//   if (e.currentTarget === e.target) {
-//     modalClose();
-//   }
-// }
-
-// function onEscape(event) {
-//     if (event.code === 'Escape')
-//        modalClose()
-// }
-
-
-(() => {
   const refs = {
-    openModalBtn: document.querySelector("[data-modal-open]"),
-    closeModalBtn: document.querySelector("[data-modal-close]"),
-    modal: document.querySelector("[data-modal]"),
+    openModalBtn: document.querySelector('.backdrop-modal'),
+    closeModalBtn: document.querySelector('.modal-btn'),
+    modal: document.getElementById('modalTeam'),
   };
 
-  refs.openModalBtn.addEventListener("click", onOpenModal);
-  refs.closeModalBtn.addEventListener("click", onCloseModal);
-  refs.modal.addEventListener("click", onBackdropClick)
+  refs.modal.addEventListener('click', onOpenModal)
+  refs.closeModalBtn.addEventListener('click', onCloseModal);
+  
 
-  function onOpenModal() {
-    window.addEventListener('keydown', onEscKeyPress);
-    refs.modal.classList.remove('.is-hidden-modal');
+function onOpenModal(event) {
+   event.preventDefoult();
+   refs.openModalBtn.classList.toggle('is-hidden-modal');
+  window.addEventListener('keydown', onEscKeyPress);
+    console.log('open')
   }
 
   function onCloseModal() {
-    window.removeEventListener('keydown', onEscKeyPress);
-    refs.modal.classList.add('.is-hidden-modal');
+    refs.openModalBtn.classList.toggle('is-hidden-modal');
+    console.log('close')
   }
 
-  function onBackdropClick(event) {
-    if (event.currentTarget === event.target)
-      onCloseModal();
-  }
 
   function onEscKeyPress(event) {
     if (event.code === 'Escape') {
       onCloseModal();
     }
   }
-})();
+
 
 
 
