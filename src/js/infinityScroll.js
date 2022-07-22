@@ -1,16 +1,17 @@
 import {createMovieCard} from './createMovieCard';
-import { fetchQueryMovies } from './fetchQueryMovies';
 import { fetchTrendingMovies } from './fetchTrendingMovies';
 import {refs} from './refs';
 import Spinner from './spinner';
 
 export let fetchOptions = {
     currentPage: 1,
+    currentQueryPage: 1,
 };
 
 export const resetPage = () => {
     fetchOptions.currentPage = 1;
 }
+
 
 const observerOptions = {
     rootMargin: '-100px',
@@ -27,11 +28,11 @@ const observer = new IntersectionObserver(entries => {
 
 setObserverOn();
 
-function setObserverOn() {
+export function setObserverOn() {
     observer.observe(document.querySelector('.scroll-check'));
 };
     
-function setObserverOff() {
+export function setObserverOff() {
     observer.unobserve(document.querySelector('.scroll-check'));
 };
 
@@ -41,39 +42,20 @@ const spinner = new Spinner({
 })
 
 function onLoadMore() {
-  spinner.show();
 
-    fetchTrendingMovies().then(movies => {
-        try {
-            if(fetchOptions.currentPage === movies.total_pages) {
-                refs.gallery.insertAdjacentHTML('beforeend', createMovieCard(movies.results));
-                window.alert('Sorry this is the last page, we do not have any movies for you :(');
-                spinner.hide();
-                setObserverOff();
-                return ;
-            }
-            fetchOptions.currentPage += 1;
+fetchTrendingMovies(spinner).then(movies => {
+    try {
+        if(fetchOptions.currentPage === movies.total_pages) {
             refs.gallery.insertAdjacentHTML('beforeend', createMovieCard(movies.results));
-            // spinner.hide();
-        } catch (error) {
-            console.log(error);
+            window.alert('Sorry this is the last page, we do not have any movies for you :(');
+            setObserverOff();
+            return ;
         }
-    }); 
+        fetchOptions.currentPage += 1;
+        refs.gallery.insertAdjacentHTML('beforeend', createMovieCard(movies.results));
 
-    fetchQueryMovies().then(movies => {
-        try {
-            if(fetchOptions.currentPage === movies.total_pages) {
-                refs.gallery.insertAdjacentHTML('beforeend', createMovieCard(movies.results));
-                window.alert('Sorry this is the last page, we do not have any movies for you :(');
-                spinner.hide();
-                setObserverOff();
-                return;
-            }
-            fetchOptions.currentPage += 1;
-            refs.gallery.insertAdjacentHTML('beforeend', createMovieCard(movies.results));
-            // spinner.hide();     
-        } catch (error) {
-            console.log(error);
-        }
-    });
+    } catch (error) {
+        console.log(error);
+    }
+});
 }
