@@ -1,6 +1,6 @@
 import { refs } from './refs';
 import { openModalMovie } from './buildModalMarcup';
-import { checkStorage, addToStorage, watchButtDisOrEn } from './localstorage';
+// import { checkStorage, addToStorage, watchButtDisOrEn } from './localstorage';
 
 async function request(id) {
   try {
@@ -20,13 +20,13 @@ refs.gallery.addEventListener('click', e => {
     .then(data => {
       cardObject = data;
       refs.modal.innerHTML = '';
-      checkStorage();
-      watchButtDisOrEn();
+      // checkStorage();
+      // watchButtDisOrEn();
       onOpenModal();
       refs.modal.insertAdjacentHTML('afterbegin', openModalMovie(data));
       refs.backdrop.addEventListener('click', onBackdropClick);
       refs.closeModalBtn.addEventListener('click', offCloseModal);
-      refs.buttonsContainer.addEventListener('click', addToStorage);
+      // refs.buttonsContainer.addEventListener('click', addToStorage);
     })
     .catch(error => {
       console.log(error);
