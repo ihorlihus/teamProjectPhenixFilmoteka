@@ -1,6 +1,6 @@
 import {createMovieCard} from './createMovieCard';
 import { fetchTrendingMovies } from './fetchTrendingMovies';
-import {refs} from './refs';
+import { refs } from './refs';
 import Spinner from './spinner';
 
 export let fetchOptions = {
@@ -12,18 +12,18 @@ export const resetPage = () => {
     fetchOptions.currentPage = 1;
 }
 
-
 const observerOptions = {
-    rootMargin: '-100px',
-    threshold: 1.0
+  rootMargin: '0px',
+  threshold: 1.0,
 };
-    
+
 const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            onLoadMore();
-        };
-    });
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      onLoadMore();
+      console.log('is intersecting');
+    }
+  });
 }, observerOptions);
 
 setObserverOn();
@@ -36,10 +36,11 @@ export function setObserverOff() {
     observer.unobserve(document.querySelector('.scroll-check'));
 };
 
+
 const spinner = new Spinner({
-    loader: '.loader',
-    hidden: true,
-})
+  loader: '.loader',
+  hidden: true,
+});
 
 function onLoadMore() {
 
@@ -59,3 +60,4 @@ fetchTrendingMovies(spinner).then(movies => {
     }
 });
 }
+

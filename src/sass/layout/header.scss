@@ -186,7 +186,16 @@
         max-width: 280px;
     }
 }
-
+// @keyframes changeOpacity {
+//     0%{opacity: 0;}
+//     50%{opacity: 0.5;}
+//     100%{opacity: 1;}
+// }
+.navigation__notificate-hidden{
+    opacity: 0;
+    // animation-name: changeOpacity;
+    // animation-duration: 2000ms;
+}
 .navigation__form {
     margin-bottom: 16px;
 

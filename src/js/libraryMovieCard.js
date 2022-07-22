@@ -9,14 +9,12 @@ export const createMovieCard = movies => {
         name,
         release_date,
         first_air_date,
-        genre_ids,
         id,
         vote_average,
       }) => {
         let moviesGenres;
 
         let moviesGenresFindName = localGenres
-          .filter(({ id }) => genre_ids.includes(id))
           .map(({ name }) => name);
 
         if (moviesGenresFindName.length <= 2) {
@@ -38,7 +36,7 @@ export const createMovieCard = movies => {
                         <div class="card__inform" data-id="${id}">
                             <p class="card__genres">${moviesGenres}</p>
                             <p class="card__date">
-                              <span></span>| 
+                              <span></span>
                             ${(
                               release_date || first_air_date
                             ).slice(0, 4)}</p>
