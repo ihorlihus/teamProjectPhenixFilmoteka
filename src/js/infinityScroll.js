@@ -1,11 +1,11 @@
 import { createMovieCard } from './createMovieCard';
-import { fetchQueryMovies } from './fetchQueryMovies';
 import { fetchTrendingMovies } from './fetchTrendingMovies';
 import { refs } from './refs';
 import Spinner from './spinner';
 
 export let fetchOptions = {
   currentPage: 1,
+  currentQueryPage: 1,
 };
 
 export const resetPage = () => {
@@ -13,7 +13,7 @@ export const resetPage = () => {
 };
 
 const observerOptions = {
-  rootMargin: '-100px',
+  rootMargin: '0px',
   threshold: 1.0,
 };
 
@@ -21,17 +21,18 @@ const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       onLoadMore();
+      console.log('is intersecting');
     }
   });
 }, observerOptions);
 
 setObserverOn();
 
-function setObserverOn() {
+export function setObserverOn() {
   observer.observe(document.querySelector('.scroll-check'));
 }
 
-function setObserverOff() {
+export function setObserverOff() {
   observer.unobserve(document.querySelector('.scroll-check'));
 }
 
@@ -41,9 +42,7 @@ const spinner = new Spinner({
 });
 
 function onLoadMore() {
-  spinner.show();
-
-  fetchTrendingMovies().then(movies => {
+  fetchTrendingMovies(spinner).then(movies => {
     try {
       if (fetchOptions.currentPage === movies.total_pages) {
         refs.gallery.insertAdjacentHTML(
@@ -53,7 +52,6 @@ function onLoadMore() {
         window.alert(
           'Sorry this is the last page, we do not have any movies for you :('
         );
-        spinner.hide();
         setObserverOff();
         return;
       }
@@ -62,26 +60,8 @@ function onLoadMore() {
         'beforeend',
         createMovieCard(movies.results)
       );
-      // spinner.hide();
     } catch (error) {
       console.log(error);
     }
   });
-
-  // fetchQueryMovies().then(movies => {
-  //     try {
-  //         if(fetchOptions.currentPage === movies.total_pages) {
-  //             refs.gallery.insertAdjacentHTML('beforeend', createMovieCard(movies.results));
-  //             window.alert('Sorry this is the last page, we do not have any movies for you :(');
-  //             spinner.hide();
-  //             setObserverOff();
-  //             return;
-  //         }
-  //         fetchOptions.currentPage += 1;
-  //         refs.gallery.insertAdjacentHTML('beforeend', createMovieCard(movies.results));
-  //         // spinner.hide();
-  //     } catch (error) {
-  //         console.log(error);
-  //     }
-  // });
 }

@@ -8,7 +8,7 @@ export const refs = {
   modal: document.querySelector('.modal__content'),
   closeModalBtn: document.querySelector('.modal-close'),
   buttonsContainer: document.querySelector('.buttons-modal'),
-  libWatchBtn: document.querySelector('.button-watched'),
-  libQueuehBtn: document.querySelector('.button-queue'),
+  queueBtnLib: document.querySelector('.button-queue'),
+  watchedBtnLib: document.querySelector('.button-watched'),
   galleryLib: document.querySelector('.gallery-lib'),
 };

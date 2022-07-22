@@ -5,7 +5,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     max-width: 480px;
-    min-height: 230px;
+    max-height: 230px;
     padding: 40px 20px 60px 20px;
     margin: 0 auto;
 
@@ -18,7 +18,7 @@
 
     @media screen and (min-width: 768px) {
         max-width: 768px;
-        min-height: 219px;
+        max-height: 219px;
         padding: 40px 32px 60px 32px;
         background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
             url(../images/bg-img-tab.jpg);
@@ -33,7 +33,7 @@
 
     @media screen and (min-width: 1200px) {
         max-width: 1200px;
-        min-height: 216px;
+        max-height: 216px;
         background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
             url(../images/bg-img-desk.jpg);
 
