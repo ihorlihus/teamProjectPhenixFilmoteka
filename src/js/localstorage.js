@@ -39,7 +39,6 @@ export function watchButtDisOrEn() {
 }
 ///watch-Fn
 function addToWatchStorage() {
-  console.log(cardObject);
   if (refs.watchButton.textContent === 'ADD TO WATCHED') {
     toRemoveWatchButt();
     watchArr.push(cardObject);
