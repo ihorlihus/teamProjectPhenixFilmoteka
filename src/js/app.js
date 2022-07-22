@@ -3,59 +3,44 @@ import { createMovieCard } from './createMovieCard';
 import { refs } from './refs';
 import Spinner from './spinner';
 import { resetPage } from './infinityScroll';
-import {onLoadMoreQuery} from './infinityScrollQuery';
-import { fetchOptions } from './infinityScroll';
-
-export let fetchOptions = {
-    currentPage: 1,
-    currentQueryPage: 1,
-};
-
+import { onLoadMoreQuery } from './infinityScrollQuery';
 
 const spinner = new Spinner({
-
-    loader: '.loader',
-    hidden: true,
-})
+  loader: '.loader',
+  hidden: true,
+});
 export let searchMovieTrim = '';
 
-refs.form.addEventListener('submit', (event) => {
-    event.preventDefault();
+refs.form.addEventListener('submit', event => {
+  event.preventDefault();
 
-    let searchMovie = event.target.elements.navigation__input.value;
-    searchMovieTrim = searchMovie.trim();
+  let searchMovie = event.target.elements.navigation__input.value;
+  searchMovieTrim = searchMovie.trim();
 
-    fetchQueryMovies(searchMovieTrim)
-        .then(movies => {
-            if (searchMovieTrim === '' || movies.results.length === 0) {
-                refs.notificate.classList.remove('navigation__notificate-hidden');
-                document.getElementById("myForm").reset();
-                setTimeout(() => {
-                    refs.notificate.classList.add('navigation__notificate-hidden')
-                },2500)
-                
-            } else {
-                refs.gallery.innerHTML = createMovieCard(movies.results);
-            }
-                spinner.show();
-            }
-        )
+  fetchQueryMovies(searchMovieTrim).then(movies => {
+    if (searchMovieTrim === '' || movies.results.length === 0) {
+      refs.notificate.classList.remove('navigation__notificate-hidden');
+      document.getElementById('myForm').reset();
+      setTimeout(() => {
+        refs.notificate.classList.add('navigation__notificate-hidden');
+      }, 2500);
+    } else {
+      refs.gallery.innerHTML = createMovieCard(movies.results);
+    }
+    spinner.show();
+  });
 
-        const observerOptions = {
-            rootMargin: '-100px',
-            threshold: 1.0
-        };
-        const observerQuery = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    onLoadMoreQuery();
-                };
-            });
-        }, observerOptions);
-        
-        observerQuery.observe(document.querySelector('.scroll-check'));    
-})
+  const observerOptions = {
+    rootMargin: '-100px',
+    threshold: 1.0,
+  };
+  const observerQuery = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        onLoadMoreQuery();
+      }
+    });
+  }, observerOptions);
 
-
-
-
+  observerQuery.observe(document.querySelector('.scroll-check'));
+});
