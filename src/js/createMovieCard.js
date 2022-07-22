@@ -36,13 +36,14 @@ export const createMovieCard = movies => {
           title || name
         }</p>
                         <div class="card__inform" data-id="${id}">
-                            <p class="card__genres">${moviesGenres}</p>
-                            <p class="card__date">
+                            <p class="card__genres" data-id="${id}">${moviesGenres}</p>
+                            <p class="card__date" data-id="${id}">
                               <span></span>| 
-                            ${(
-                              release_date || first_air_date
-                            ).slice(0, 4)}</p>
-                            <span class="card__vote visually-hidden">${voteAverageToString.slice(0,3)}</span>
+                            ${(release_date || first_air_date).slice(0, 4)}</p>
+                            <span class="card__vote visually-hidden">${voteAverageToString.slice(
+                              0,
+                              3
+                            )}</span>
                         </div>
                     </a>
                 </li>

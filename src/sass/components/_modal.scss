@@ -140,6 +140,17 @@
 }
 
 
+.about-scrollbar::-webkit-scrollbar {
+    width: 13px;
+}
+
+.about-scrollbar::-webkit-scrollbar-thumb {
+    background: linear-gradient(to top, #f7f7f7, #ff6b01);
+    border-radius: 5px;
+    border: solid 1px #5C5252;
+}
+
+
 .buttons-modal {
     display: flex;
     justify-content: space-around;
@@ -156,7 +167,7 @@
     color: #ffffff;
     background: #FF6B01;
     border: none;
-    min-width: 110px;
+    min-width: 120px;
     min-height: 44px;
     border-radius: 5px;
     font-weight: 500;
@@ -168,7 +179,7 @@
     }
 
     @media screen and (min-width: 768px) {
-        min-width: 136px;
+        min-width: 139px;
     }
 }
 
