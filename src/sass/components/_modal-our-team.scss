@@ -1,18 +1,70 @@
+.backdrop-modal {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.2);
+    transition: opacity 500ms, visibility 500ms;
+}
+
+.backdrop-modal.is-hidden .modal-team {
+    transform: rotate(-300deg) scale(0.5);
+}
+.is-hidden-modal {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+}
+
 .modal-team{
     display: block;
     margin: auto auto;
     width: 810px;
     height: 560px;
-    background-color: aquamarine;
+    background-image: linear-gradient(#2E9AFF 25% 30%, #FFD829 75%);
     justify-content: center;
+    padding: 50px;
+    border-radius: 20%;
 }
 
 .modal-team-title{
     text-align: center;
     width: 100%;
     height: min-content;
+    margin-bottom: 50px;
 }
 .modal-team-list{
     text-align: center;
-    list-style: none;
 }
+
+.modal-team-item {
+   margin-bottom: 20px;
+}
+
+  .modal-btn {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      box-sizing: border-box;
+      top: 3%;
+      left: 70%;
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
+      transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+      &:hover,
+      &:focus {
+          fill: #2E9AFF;
+      }
+  }
+
+ .modal__icon {
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     color: currentColor;
+ }
+
+
