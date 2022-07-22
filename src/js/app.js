@@ -23,7 +23,7 @@ refs.form.addEventListener('submit', event => {
       document.getElementById('myForm').reset();
       setTimeout(() => {
         refs.notificate.classList.add('navigation__notificate-hidden');
-      }, 2500);
+      }, 5000);
     } else {
       refs.gallery.innerHTML = createMovieCard(movies.results);
     }
