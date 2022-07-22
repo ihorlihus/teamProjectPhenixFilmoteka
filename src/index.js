@@ -7,3 +7,4 @@ import './js/spinner';
 import './js/infinityScroll';
 import './js/localstorage';
 import './js/renderOpenModal';
+import './js/infinityScrollQuery';

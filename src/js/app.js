@@ -1,20 +1,29 @@
-import { fetchTrendingMovies } from './fetchTrendingMovies';
 import { fetchQueryMovies } from './fetchQueryMovies';
 import { createMovieCard } from './createMovieCard';
 import { refs } from './refs';
 import Spinner from './spinner';
+import { resetPage } from './infinityScroll';
+import {onLoadMoreQuery} from './infinityScrollQuery';
+import { fetchOptions } from './infinityScroll';
+
+export let fetchOptions = {
+    currentPage: 1,
+    currentQueryPage: 1,
+};
+
 
 const spinner = new Spinner({
 
     loader: '.loader',
     hidden: true,
 })
+export let searchMovieTrim = '';
 
 refs.form.addEventListener('submit', (event) => {
     event.preventDefault();
 
     let searchMovie = event.target.elements.navigation__input.value;
-    const searchMovieTrim = searchMovie.trim();
+    searchMovieTrim = searchMovie.trim();
 
     fetchQueryMovies(searchMovieTrim)
         .then(movies => {
@@ -30,7 +39,21 @@ refs.form.addEventListener('submit', (event) => {
             }
                 spinner.show();
             }
-        )    
+        )
+
+        const observerOptions = {
+            rootMargin: '-100px',
+            threshold: 1.0
+        };
+        const observerQuery = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    onLoadMoreQuery();
+                };
+            });
+        }, observerOptions);
+        
+        observerQuery.observe(document.querySelector('.scroll-check'));    
 })
 
 
