@@ -1,13 +1,13 @@
 .backdrop-modal {
     position: fixed;
-    top: 0;
+    top: 0px;
     width: 100vw;
     height: 100vh;
     background: rgba(0, 0, 0, 0.2);
     transition: opacity 500ms, visibility 500ms;
 }
 
-.backdrop-modal.is-hidden .modal-team {
+.backdrop-modal.is-hidden-modal .modal-team {
     transform: rotate(-300deg) scale(0.5);
 }
 .is-hidden-modal {
@@ -19,12 +19,22 @@
 .modal-team{
     display: block;
     margin: auto auto;
-    width: 810px;
-    height: 560px;
+    width: 320px;
+    height: 650px;
     background-image: linear-gradient(45deg, rgba(128, 128, 128) 45% 30%, orange);
     justify-content: center;
     padding: 50px;
     border-radius: 20%;
+    
+        @media screen and (min-width: 768px) {
+            
+            width: 560px;
+            height: 560px;
+        }
+    
+        @media screen and (min-width: 1200px) {
+            width: 810px;
+        }
 }
 
 .modal-team-title{
@@ -32,6 +42,10 @@
     width: 100%;
     height: min-content;
     margin-bottom: 50px;
+    animation-duration: 3s;
+    animation-name: slidein;
+    color: #ffffff;
+    text-shadow: 6px 6px 0px rgba(0, 0, 0, 0.2);
 }
 .modal-team-list{
     text-align: center;
@@ -39,6 +53,21 @@
 
 .modal-team-item {
    margin-bottom: 20px;
+   color: #ffffff;
+   text-shadow: 6px 6px 0px rgba(0, 0, 0, 0.2);
+   animation-duration: 3s;
+   animation-name: slidein;
+}
+@keyframes slidein {
+    from {
+        margin-left: 100%;
+        width: 300%;
+    }
+
+    to {
+        margin-left: 0%;
+        width: 100%;
+    }
 }
 
   .modal-btn {
@@ -55,7 +84,7 @@
 
       &:hover,
       &:focus {
-          fill: #2E9AFF;
+          fill: orange;
       }
   }
 
