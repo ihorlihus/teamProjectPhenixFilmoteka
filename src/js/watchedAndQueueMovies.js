@@ -1,7 +1,6 @@
 import { refs } from './refs.js';
 import { createMovieCard } from './libraryMovieCard';
 
-
 refs.watchedBtnLib.addEventListener('click', onWatchedBtnClick);
 refs.queueBtnLib.addEventListener('click', onQueueBtnClick);
 refs.gallery.addEventListener('click', onGalleryContainerClick);
@@ -13,6 +12,9 @@ export function onWatchedBtnClick() {
     //console.log(parsedGetWatched)
     if (parsedGetWatched.length !== 0) {
         refs.gallery.insertAdjacentHTML('afterbegin', createMovieCard(parsedGetWatched));
+        refs.fillerContainer.innerHTML = ''
+    } else {
+        refs.fillerContainer.innerHTML = `<p class="fill-text">Your list is empty. Choose a movie.</p>`;
     }
 }
 
@@ -23,6 +25,9 @@ export function onQueueBtnClick() {
     //console.log(parsedGetQueue)
     if (parsedGetQueue.length !== 0) {
         refs.gallery.insertAdjacentHTML('afterbegin', createMovieCard(parsedGetQueue));
+        refs.fillerContainer.innerHTML = ''
+    } else {
+        refs.fillerContainer.innerHTML = `<p class="fill-text">Your list is empty. Choose a movie.</p>`;
     }
 }
 

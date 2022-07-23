@@ -1,3 +1,7 @@
+const saveGenres = localStorage.getItem("genres");
+
+const localGenres = JSON.parse(saveGenres);
+
 export const createMovieCard = movies => {
   return movies
     .map(
