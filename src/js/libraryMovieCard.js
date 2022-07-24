@@ -1,3 +1,6 @@
+import { saveGenres } from './createMovieCard';
+import { localGenres } from './createMovieCard';
+
 export const createMovieCard = movies => {
   return movies
     .map(
