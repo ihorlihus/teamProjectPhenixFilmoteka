@@ -22,10 +22,23 @@ export const fetchGenres = async () => {
 // }
 // onGetGenres();
 
-fetchGenres().then(genres => {
-    if ("genres") {
+// fetchGenres().then(genres => {
+//     if ("genres") {
+//         return;
+//     } else {
+//         localStorage.setItem("genres", JSON.stringify(genres.genres));
+//     }
+// })
+
+function checkfetchGenres(){
+    if (localStorage.getItem('genres')) {
         return;
     } else {
-        localStorage.setItem("genres", JSON.stringify(genres.genres));
+        fetchGenres().then(genres => {
+            localStorage.setItem('genres', JSON.stringify(genres.genres));
+            const saveGenres = localStorage.getItem('genres');
+            localGenres = JSON.parse(saveGenres);
+        });
     }
-})
+};
+checkfetchGenres();
