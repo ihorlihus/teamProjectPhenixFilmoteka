@@ -1,12 +1,16 @@
-import { createMovieCard } from './createMovieCard';
-import { fetchQueryMovies } from './fetchQueryMovies';
+import {createMovieCard} from './createMovieCard';
 import { fetchTrendingMovies } from './fetchTrendingMovies';
 import { refs } from './refs';
 import Spinner from './spinner';
 
-let fetchOptions = {
-  currentPage: 1,
+export let fetchOptions = {
+    currentPage: 1,
+    currentQueryPage: 1,
 };
+
+export const resetPage = () => {
+    fetchOptions.currentPage = 1;
+}
 
 const observerOptions = {
   rootMargin: '0px',
@@ -24,13 +28,14 @@ const observer = new IntersectionObserver(entries => {
 
 setObserverOn();
 
-function setObserverOn() {
-  observer.observe(document.querySelector('.scroll-check'));
-}
+export function setObserverOn() {
+    observer.observe(document.querySelector('.scroll-check'));
+};
+    
+export function setObserverOff() {
+    observer.unobserve(document.querySelector('.scroll-check'));
+};
 
-function setObserverOff() {
-  observer.unobserve(document.querySelector('.scroll-check'));
-}
 
 const spinner = new Spinner({
   loader: '.loader',
@@ -38,51 +43,21 @@ const spinner = new Spinner({
 });
 
 function onLoadMore() {
-  fetchTrendingMovies().then(movies => {
+
+fetchTrendingMovies(spinner).then(movies => {
     try {
-      fetchOptions.currentPage += 1;
-      refs.gallery.insertAdjacentHTML(
-        'beforeend',
-        createMovieCard(movies.results)
-      );
-      spinner.hide();
+        if(fetchOptions.currentPage === movies.total_pages) {
+            refs.gallery.insertAdjacentHTML('beforeend', createMovieCard(movies.results));
+            window.alert('Sorry this is the last page, we do not have any movies for you :(');
+            setObserverOff();
+            return ;
+        }
+        fetchOptions.currentPage += 1;
+        refs.gallery.insertAdjacentHTML('beforeend', createMovieCard(movies.results));
+
     } catch (error) {
-      console.log(error);
+        console.log(error);
     }
-  });
-
-
-    // fetchQueryMovies().then(movies => {
-    //     try {
-    //         fetchOptions.currentPage += 1;
-    //         refs.gallery.insertAdjacentHTML('beforeend', createMovieCard(movies.results));
-    //         spinner.hide();     
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // });
+});
 }
-    
-    
 
-
-
-// function drawMovies(data) {
-//     const movies = data.hits;
-//     totalMovies = data.totalHits;
-
-//     if (!totalMovies) {
-//         Notify.failure('Sorry, there are NO MOVIES matching your search query. Please try again.');
-
-//         refs.form.reset();
-//         return;
-//     };
-
-//     if (fetchOptions.currentPage === 1) {
-//         Notify.success(`Wow! We found for you${totalMovies} movies.`);
-//     };
-
-//     createMovieCard(movies.results);
-
-//     setObserverOn();
-// };

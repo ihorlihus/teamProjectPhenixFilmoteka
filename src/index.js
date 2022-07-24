@@ -8,3 +8,4 @@ import './js/infinityScroll';
 import './js/localstorage';
 import './js/renderOpenModal';
 import './js/modalTeamVersion';
+import './js/infinityScrollQuery';
