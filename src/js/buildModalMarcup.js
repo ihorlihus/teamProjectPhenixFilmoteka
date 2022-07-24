@@ -20,7 +20,7 @@ export function openModalMovie(data) {
       .slice(0, 2)
       .join(', ') + ', Other';
 
-  return `<img class="img-modal" src="https://image.tmdb.org/t/p/w500${poster_path}" alt="" data-id=${id} />
+  return `<img class="img-modal" src="https://image.tmdb.org/t/p/w500${poster_path}" alt="${title}" data-id=${id} />
         <div class="container-modal">
           <h1 class="title-modal">${title}</h1>
           <table class="table">
