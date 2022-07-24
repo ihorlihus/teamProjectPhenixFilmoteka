@@ -16,21 +16,24 @@ async function request(id) {
 export let cardObject;
 refs.gallery.addEventListener('click', e => {
   e.preventDefault();
-  request(e.target.dataset.id)
-    .then(data => {
-      cardObject = data;
-      refs.modal.innerHTML = '';
-      checkStorage();
-      watchButtDisOrEn();
-      onOpenModal();
-      refs.modal.insertAdjacentHTML('afterbegin', openModalMovie(data));
-      refs.backdrop.addEventListener('click', onBackdropClick);
-      refs.closeModalBtn.addEventListener('click', offCloseModal);
-      refs.buttonsContainer.addEventListener('click', addToStorage);
-    })
-    .catch(error => {
-      console.log(error);
-    });
+
+  if (e.target.dataset.id) {
+    request(e.target.dataset.id)
+      .then(data => {
+        cardObject = data;
+        refs.modal.innerHTML = '';
+        checkStorage();
+        watchButtDisOrEn();
+        onOpenModal();
+        refs.modal.insertAdjacentHTML('afterbegin', openModalMovie(data));
+        refs.backdrop.addEventListener('click', onBackdropClick);
+        refs.closeModalBtn.addEventListener('click', offCloseModal);
+        refs.buttonsContainer.addEventListener('click', addToStorage);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
 });
 
 function onOpenModal() {
