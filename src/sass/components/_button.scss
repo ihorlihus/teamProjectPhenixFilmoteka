@@ -19,6 +19,7 @@
     &:focus {
         color: var(--title-color);
         background-color: var(--second-text-color);
+        border: none;
     }
 
     @media screen and (max-width: 768px) {
@@ -42,4 +43,10 @@
     @media screen and (min-width: 768px) {
         margin-right: 16px;
     }
+}
+
+.button-active {
+    color: var(--title-color);
+    background-color: var(--second-text-color);
+    border: none;
 }
