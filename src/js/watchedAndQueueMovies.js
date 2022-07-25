@@ -35,6 +35,7 @@ export function onQueueBtnClick() {
     }
 }
 
+
 //function onGalleryContainerClick(evt) {
     //evt.preventDefault()
     //if (evt.target.nodeName !== 'IMG') {

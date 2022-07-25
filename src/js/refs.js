@@ -12,4 +12,5 @@ export const refs = {
   watchedBtnLib: document.querySelector('.button-watched'),
   galleryLib: document.querySelector('.gallery-lib'),
   fillerContainer: document.querySelector('.filler-container'),
+  theme: document.querySelector('.main'),
 };
