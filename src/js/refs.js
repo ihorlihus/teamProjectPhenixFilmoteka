@@ -11,6 +11,7 @@ export const refs = {
   queueBtnLib: document.querySelector('.button-queue'),
   watchedBtnLib: document.querySelector('.button-watched'),
   galleryLib: document.querySelector('.gallery-lib'),
+  fillerContainer: document.querySelector('.filler-container'),
   // login refs
   logoutButton: document.querySelector('.logout'),
   userImg: document.querySelector('.user__img'),

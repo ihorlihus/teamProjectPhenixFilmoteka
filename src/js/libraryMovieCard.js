@@ -1,4 +1,5 @@
-import { localGenres } from './fetchGenres';
+import { saveGenres } from './createMovieCard';
+import { localGenres } from './createMovieCard';
 
 export const createMovieCard = movies => {
   return movies
@@ -14,8 +15,7 @@ export const createMovieCard = movies => {
       }) => {
         let moviesGenres;
 
-        let moviesGenresFindName = localGenres
-          .map(({ name }) => name);
+        let moviesGenresFindName = localGenres.map(({ name }) => name);
 
         if (moviesGenresFindName.length <= 2) {
           moviesGenres = moviesGenresFindName.join(', ');
@@ -36,11 +36,12 @@ export const createMovieCard = movies => {
                         <div class="card__inform" data-id="${id}">
                             <p class="card__genres">${moviesGenres}</p>
                             <p class="card__date">
-                              <span></span>
-                            ${(
-                              release_date || first_air_date
-                            ).slice(0, 4)}</p>
-                            <span class="card__vote visually-hidden">${voteAverageToString.slice(0,3)}</span>
+                              <span></span>|
+                            ${(release_date || first_air_date).slice(0, 4)}</p>
+                            <span class="card__vote visually-hidden">${voteAverageToString.slice(
+                              0,
+                              3
+                            )}</span>
                         </div>
                     </a>
                 </li>

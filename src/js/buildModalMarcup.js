@@ -12,9 +12,15 @@ export function openModalMovie(data) {
     id,
   } = data;
 
-  const popularityToString = popularity.toString();
+  const popularityToString = Math.round(popularity.toString());
 
-  return `<img class="img-modal" src="https://image.tmdb.org/t/p/w500${poster_path}" alt="" data-id=${id} />
+  const modalGenres =
+    genres
+      .map(genre => genre.name)
+      .slice(0, 2)
+      .join(', ') + ', Other';
+
+  return `<img class="img-modal" src="https://image.tmdb.org/t/p/w500${poster_path}" alt="${title}" data-id=${id} />
         <div class="container-modal">
           <h1 class="title-modal">${title}</h1>
           <table class="table">
@@ -24,7 +30,7 @@ export function openModalMovie(data) {
             </tr>
             <tr class="table-separator">
               <th class="table__text">Popularity</th>
-              <th>${popularityToString.slice(0, 5)}</th>
+              <th>${popularityToString}</th>
             </tr>
             <tr class="table-separator">
               <th class="table__text">Original Title</th>
@@ -32,13 +38,11 @@ export function openModalMovie(data) {
             </tr>
             <tr class="table-separator">
               <th class="table__text">Genre</th>
-              <th>${
-                genres ? genres.map(genre => genre.name).slice(0, 2) : ' '
-              }</th>
+              <th>${modalGenres}</th>
             </tr>
           </table>
           <h2 class="title-about__modal">ABOUT</h2>
-          <p class="about-text__modal">${overview}
+          <p class="about-text__modal about-scrollbar">${overview}
           </p>
         </div>
       </div>
