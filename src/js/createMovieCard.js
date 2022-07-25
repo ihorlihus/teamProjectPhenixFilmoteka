@@ -1,7 +1,8 @@
-import { localGenres } from './fetchGenres';
+export const saveGenres = localStorage.getItem('genres');
+
+export const localGenres = JSON.parse(saveGenres);
 
 export const createMovieCard = movies => {
-  console.log(movies);
   return movies
     .map(
       ({
@@ -16,16 +17,16 @@ export const createMovieCard = movies => {
       }) => {
         let moviesGenres;
 
-        // let moviesGenresFindName = localGenres
-        //   .filter(({ id }) => genre_ids.includes(id))
-        //   .map(({ name }) => name);
+        let moviesGenresFindName = localGenres
+          .filter(({ id }) => genre_ids.includes(id))
+          .map(({ name }) => name);
 
-        // if (moviesGenresFindName.length <= 2) {
-        //   moviesGenres = moviesGenresFindName.join(', ');
-        // } else {
-        //   moviesGenres =
-        //     moviesGenresFindName.slice(0, 2).join(', ') + ', Other';
-        // }
+        if (moviesGenresFindName.length <= 2) {
+          moviesGenres = moviesGenresFindName.join(', ');
+        } else {
+          moviesGenres =
+            moviesGenresFindName.slice(0, 2).join(', ') + ', Other';
+        }
         const voteAverageToString = vote_average.toString();
         return `
                 <li class="card__item" data-id="${id}">
@@ -37,8 +38,8 @@ export const createMovieCard = movies => {
           title || name
         }</p>
                         <div class="card__inform" data-id="${id}">
-                            <p class="card__genres">${moviesGenres}</p>
-                            <p class="card__date">
+                            <p class="card__genres" data-id="${id}">${moviesGenres}</p>
+                            <p class="card__date" data-id="${id}">
                               <span></span>| 
                             ${(release_date || first_air_date).slice(0, 4)}</p>
                             <span class="card__vote visually-hidden">${voteAverageToString.slice(
