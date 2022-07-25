@@ -16,4 +16,4 @@ export const fetchTrendingMovies = async (spinner) => {
 };
 
 
-// fetchTrendingMovies().then(movies => console.log(movies.results));
+// fetchTrendingMovies().then(data => console.log(data));
