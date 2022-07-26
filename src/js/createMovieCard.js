@@ -1,9 +1,8 @@
 import listGenres from './genres.json';
-export const saveGenres = localStorage.getItem("genres");
+export const saveGenres = localStorage.getItem('genres');
 
 export const localGenres = JSON.parse(saveGenres);
 // https://via.placeholder.com/150
-
 
 export const createMovieCard = movies => {
   return movies

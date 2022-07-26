@@ -1,6 +1,7 @@
-import './js/example';
+import './js/firebase';
+import './js/fetchTrendingMovies';
 import './js/app';
-// import './js/modalTeam';
+import './js/modalTeam';
 import './js/fetchGenres';
 import './js/preloader';
 import './js/spinner';

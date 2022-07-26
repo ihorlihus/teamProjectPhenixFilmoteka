@@ -1,16 +1,16 @@
-import {createMovieCard} from './createMovieCard';
+import { createMovieCard } from './createMovieCard';
 import { fetchTrendingMovies } from './fetchTrendingMovies';
 import { refs } from './refs';
 import Spinner from './spinner';
 
 export let fetchOptions = {
-    currentPage: 1,
-    currentQueryPage: 1,
+  currentPage: 1,
+  currentQueryPage: 1,
 };
 
 export const resetPage = () => {
-    fetchOptions.currentPage = 1;
-}
+  fetchOptions.currentPage = 1;
+};
 
 const observerOptions = {
   rootMargin: '0px',
@@ -29,13 +29,12 @@ const observer = new IntersectionObserver(entries => {
 setObserverOn();
 
 export function setObserverOn() {
-    observer.observe(document.querySelector('.scroll-check'));
-};
-    
-export function setObserverOff() {
-    observer.unobserve(document.querySelector('.scroll-check'));
-};
+  observer.observe(document.querySelector('.scroll-check'));
+}
 
+export function setObserverOff() {
+  observer.unobserve(document.querySelector('.scroll-check'));
+}
 
 const spinner = new Spinner({
   loader: '.loader',
@@ -43,21 +42,26 @@ const spinner = new Spinner({
 });
 
 function onLoadMore() {
-
-fetchTrendingMovies(spinner).then(movies => {
+  fetchTrendingMovies(spinner).then(movies => {
     try {
-        if(fetchOptions.currentPage === movies.total_pages) {
-            refs.gallery.insertAdjacentHTML('beforeend', createMovieCard(movies.results));
-            window.alert('Sorry this is the last page, we do not have any movies for you :(');
-            setObserverOff();
-            return ;
-        }
-        fetchOptions.currentPage += 1;
-        refs.gallery.insertAdjacentHTML('beforeend', createMovieCard(movies.results));
-
+      if (fetchOptions.currentPage === movies.total_pages) {
+        refs.gallery.insertAdjacentHTML(
+          'beforeend',
+          createMovieCard(movies.results)
+        );
+        window.alert(
+          'Sorry this is the last page, we do not have any movies for you :('
+        );
+        setObserverOff();
+        return;
+      }
+      fetchOptions.currentPage += 1;
+      refs.gallery.insertAdjacentHTML(
+        'beforeend',
+        createMovieCard(movies.results)
+      );
     } catch (error) {
-        console.log(error);
+      console.log(error);
     }
-});
+  });
 }
-

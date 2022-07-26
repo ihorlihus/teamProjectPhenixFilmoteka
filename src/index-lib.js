@@ -1,3 +1,4 @@
+import './js/firebase';
 import './js/fetchGenres';
 import './js/preloader';
 import './js/localstorage';
