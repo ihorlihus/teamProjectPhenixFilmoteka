@@ -10,7 +10,6 @@ import {
   onAuthStateChanged,
 } from 'firebase/auth';
 import { refs } from './refs';
-
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -58,7 +57,7 @@ refs.singupForm.addEventListener('submit', e => {
     })
     .catch(error => {
       refs.singupForm.reset();
-      alert(error.message);
+      console.log(error.message);
     });
 });
 
@@ -73,7 +72,7 @@ refs.loginForm.addEventListener('submit', e => {
       refs.loginForm.reset();
     })
     .catch(err => {
-      alert(`${err.message}`);
+      console.log(err.message);
       refs.loginForm.reset();
     });
 });
@@ -118,6 +117,7 @@ refs.signupOpen.addEventListener('click', e => {
 });
 
 function showUserData(user) {
+  console.log(user);
   refs.userImg.src =
     user.photoURL !== null
       ? `${user.photoURL}`
