@@ -1,0 +1,75 @@
+.main {
+    background-color: #F0F8FF;
+}
+
+.dark-theme__container {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.dark-theme {
+    margin-top: 4px;
+    margin-bottom: 10px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    text-shadow: -1px -1px #000;
+    user-select: none;
+    padding: .8em 2em;
+    outline: none;
+    background-color: #000;
+    background-image: linear-gradient(45deg, rgba(255, 255, 255, .0) 30%, rgba(255, 255, 255, .8), rgba(255, 255, 255, .0) 70%), radial-gradient(190% 100% at 50% 0%, rgba(255, 255, 255, .7) 0%, rgba(255, 255, 255, .5) 50%, rgba(0, 0, 0, 0) 50%);
+    background-repeat: no-repeat;
+    background-size: 200% 100%, auto;
+    background-position: 200% 0, 0 0;
+    box-shadow: rgba(0, 0, 0, .3) 0 2px 5px;
+
+    &:hover,
+    &:focus {
+        transition: background-color 300ms;
+        background-color: rgba(255, 255, 255, 0.05);
+    }
+}
+
+.light {
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    pointer-events: none;
+    opacity: 0;
+
+}
+
+
+.light.visible {
+    pointer-events: auto;
+    opacity: 1;
+    transition: transform 0.3s ease-in, opacity 0.2s ease-in 0.1s;
+}
+
+.dark {
+    width: 50%;
+    height: 50%;
+    pointer-events: none;
+    position: absolute;
+    opacity: 0;
+
+}
+
+.dark.visible {
+    pointer-events: auto;
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+    transition: transform 0.3s ease-in, opacity 0.2s ease-in 0.1s;
+}
+
+.darktheme {
+    color: #fff;
+    background-color: #696969;
+}
