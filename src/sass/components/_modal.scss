@@ -18,7 +18,7 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    padding: 42px 20px 46px 20px;
+    padding: 40px 20px 40px 20px;
     width: calc(100% - 30px);
     max-width: 280px;
 
@@ -75,9 +75,9 @@
 
 .title-modal {
     letter-spacing: 0.01em;
-    font-size: 20px;
+    font-size: 19px;
     line-height: 1.15;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 
     @media screen and (min-width: 1200px) {
         font-size: 30px;
@@ -87,7 +87,7 @@
 
 .img-modal {
     border-radius: 5px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 
     @media screen and (min-width: 768px) {
         max-width: 264px;
@@ -103,23 +103,21 @@
 }
 
 .table {
+    display: inline-flex;
     letter-spacing: 0.01em;
-    font-size: 12px;
-    margin-bottom: 20px;
+    font-size: 11px;
+    margin-bottom: 15px;
     text-align: left;
     line-height: 1.5;
     font-weight: 500;
 }
 
-.table-separator:not(:last-child) {
-    margin-bottom: 8px;
-}
-
 .table__text {
+    display: flex;
+    margin-right: 30px;
     color: #8C8C8C;
 
     @media screen and (min-width: 768px) {
-        display: flex;
         margin-right: 41px;
     }
 }
@@ -132,13 +130,16 @@
 }
 
 .about-text__modal {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     font-size: 12px;
     line-height: 1.7;
-    max-height: 300px;
+    max-height: 120px;
     overflow: auto;
+    
+    @media screen and (min-width: 768px) {
+        max-height: 236px;
+    }
 }
-
 
 .about-scrollbar::-webkit-scrollbar {
     width: 13px;
@@ -149,7 +150,6 @@
     border-radius: 5px;
     border: solid 1px #5C5252;
 }
-
 
 .buttons-modal {
     display: flex;
@@ -177,8 +177,8 @@
 
     @media screen and (min-width: 768px) {
         font-size: 12px;
-        padding: 14px 6px;
-        max-width: 125px;
+        padding: 14px 7px;
+        min-width: 125px;
     }
 
     @media screen and (min-width: 1200px) {
