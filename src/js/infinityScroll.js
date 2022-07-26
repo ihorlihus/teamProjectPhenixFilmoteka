@@ -21,7 +21,6 @@ const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       onLoadMore();
-      console.log('is intersecting');
     }
   });
 }, observerOptions);
@@ -48,7 +47,7 @@ fetchTrendingMovies(spinner).then(movies => {
     try {
         if(fetchOptions.currentPage === movies.total_pages) {
             refs.gallery.insertAdjacentHTML('beforeend', createMovieCard(movies.results));
-            window.alert('Sorry this is the last page, we do not have any movies for you :(');
+            refs.gallery.insertAdjacentHTML('afterend', 'Sorry this is the last page, we do not have any movies for you :(');
             setObserverOff();
             return ;
         }
