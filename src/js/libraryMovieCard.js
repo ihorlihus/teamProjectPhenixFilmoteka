@@ -15,6 +15,13 @@ export const createMovieCard = movies => {
         vote_average,
       }) => {
         let moviesGenres;
+        const imgURL = poster_path
+          ? `https://image.tmdb.org/t/p/w500${poster_path}`
+          : "https://via.placeholder.com/344x486";
+        
+        const date = (release_date || first_air_date)
+          ? (release_date || first_air_date)
+          : '0000-00-00';
 
         let moviesGenresFindName = listGenres.genres.map(({ name }) => name);
 
@@ -24,22 +31,26 @@ export const createMovieCard = movies => {
           moviesGenres =
             moviesGenresFindName.slice(0, 2).join(', ') + ', Other';
         }
+
+        const filmGenre = moviesGenres
+          ? moviesGenres
+          : 'Other';
         const voteAverageToString = vote_average.toString();
         return `
                 <li class="card__item" data-id="${id}">
                     <a class="card card__link" data-id="${id}">
-                        <img class="card__img" data-id="${id}" src='https://image.tmdb.org/t/p/w500${poster_path}' alt='${
+                        <img class="card__img" data-id="${id}" src='${imgURL}' alt='${
           title || name
         }' loading="lazy"/>
                         <p class="card__title" data-id="${id}">${
           title || name
         }</p>
                         <div class="card__inform" data-id="${id}">
-                            <p class="card__genres">${moviesGenres}</p>
+                            <p class="card__genres">${filmGenre}</p>
                             <p class="card__date">
                               <span></span>|
-                            ${(release_date || first_air_date).slice(0, 4)}</p>
-                            <span class="card__vote">${voteAverageToString.slice(
+                            ${date.slice(0,4)}</p>
+                            <span class="card__vote visually-hidden">${voteAverageToString.slice(
                               0,
                               3
                             )}</span>
