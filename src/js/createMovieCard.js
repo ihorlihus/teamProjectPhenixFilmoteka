@@ -1,3 +1,4 @@
+import listGenres from './genres.json';
 export const saveGenres = localStorage.getItem('genres');
 
 export const localGenres = JSON.parse(saveGenres);
@@ -17,7 +18,7 @@ export const createMovieCard = movies => {
       }) => {
         let moviesGenres;
 
-        let moviesGenresFindName = localGenres
+        let moviesGenresFindName = listGenres.genres
           .filter(({ id }) => genre_ids.includes(id))
           .map(({ name }) => name);
 
