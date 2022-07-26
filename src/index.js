@@ -10,3 +10,5 @@ import './js/localstorage';
 import './js/renderOpenModal';
 import './js/modalTeamVersion';
 import './js/infinityScrollQuery';
+import './js/topButton';
+import './js/theme';

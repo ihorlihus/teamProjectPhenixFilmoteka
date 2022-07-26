@@ -22,7 +22,7 @@ export function openModalMovie(data) {
 
   return `<img class="img-modal" src="https://image.tmdb.org/t/p/w500${poster_path}" alt="${title}" data-id=${id} />
         <div class="container-modal">
-          <h1 class="title-modal">${title}</h1>
+          <b class="title-modal">${title}</b>
           <table class="table">
             <tr class="table-separator">
               <th class="table__text">Vote / Votes</th>
@@ -41,7 +41,7 @@ export function openModalMovie(data) {
               <th>${modalGenres}</th>
             </tr>
           </table>
-          <h2 class="title-about__modal">ABOUT</h2>
+          <b class="title-about__modal">ABOUT</b>
           <p class="about-text__modal about-scrollbar">${overview}
           </p>
         </div>

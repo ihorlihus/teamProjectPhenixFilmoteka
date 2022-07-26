@@ -23,10 +23,13 @@ export function onLoadMoreQuery() {
   setObserverOff();
   fetchQueryMovies(searchMovieTrim).then(movies => {
     try {
-      refs.gallery.insertAdjacentHTML(
-        'beforeend',
-        createMovieCard(movies.results)
-      );
+      if(fetchOptions.currentQueryPage === movies.total_pages) {
+      refs.gallery.insertAdjacentHTML('beforeend', createMovieCard(movies.results));
+      refs.gallery.insertAdjacentHTML('afterend', 'Sorry this is the last page, we do not have any movies for you :(');
+      spinner.hide();
+      }
+      refs.gallery.insertAdjacentHTML('beforeend', createMovieCard(movies.results));
+      
     } catch (error) {
       console.log(error);
     }
