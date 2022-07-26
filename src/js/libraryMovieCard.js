@@ -31,6 +31,10 @@ export const createMovieCard = movies => {
           moviesGenres =
             moviesGenresFindName.slice(0, 2).join(', ') + ', Other';
         }
+
+        const filmGenre = moviesGenres
+          ? moviesGenres
+          : 'Other';
         const voteAverageToString = vote_average.toString();
         return `
                 <li class="card__item" data-id="${id}">
@@ -42,7 +46,7 @@ export const createMovieCard = movies => {
           title || name
         }</p>
                         <div class="card__inform" data-id="${id}">
-                            <p class="card__genres">${moviesGenres}</p>
+                            <p class="card__genres">${filmGenre}</p>
                             <p class="card__date">
                               <span></span>|
                             ${date.slice(0,4)}</p>
