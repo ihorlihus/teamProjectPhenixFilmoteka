@@ -1,5 +1,6 @@
 import { saveGenres } from './createMovieCard';
 import { localGenres } from './createMovieCard';
+import listGenres from './genres.json';
 
 export const createMovieCard = movies => {
   return movies
@@ -15,7 +16,7 @@ export const createMovieCard = movies => {
       }) => {
         let moviesGenres;
 
-        let moviesGenresFindName = localGenres.map(({ name }) => name);
+        let moviesGenresFindName = listGenres.genres.map(({ name }) => name);
 
         if (moviesGenresFindName.length <= 2) {
           moviesGenres = moviesGenresFindName.join(', ');

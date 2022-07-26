@@ -1,3 +1,5 @@
+import listGenres from './genres.json';
+import { localGenres } from './createMovieCard';
 export const fetchGenres = async () => {
     try {
         const response = await fetch(`
@@ -8,27 +10,6 @@ export const fetchGenres = async () => {
         throw Error(response.statusText);
     }
 }
-
-// function onGetGenres() {
-//     if (localStorage.getItem('genres')) {
-//         console.log("GENRES");
-//         return;
-//     } else {
-//         fetchGenres().then(genres => {
-//             console.log("NO GNR");
-//             localStorage.setItem("genres", JSON.stringify(genres.genres));
-//         })
-//     }
-// }
-// onGetGenres();
-
-// fetchGenres().then(genres => {
-//     if ("genres") {
-//         return;
-//     } else {
-//         localStorage.setItem("genres", JSON.stringify(genres.genres));
-//     }
-// })
 
 function checkfetchGenres(){
     if (localStorage.getItem('genres')) {
