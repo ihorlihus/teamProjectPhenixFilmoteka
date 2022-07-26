@@ -118,7 +118,6 @@ refs.signupOpen.addEventListener('click', e => {
 });
 
 function showUserData(user) {
-  console.log(user);
   refs.userImg.src =
     user.photoURL !== null
       ? `${user.photoURL}`
