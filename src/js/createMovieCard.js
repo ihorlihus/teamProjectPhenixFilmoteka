@@ -21,7 +21,7 @@ export const createMovieCard = movies => {
         let moviesGenres;
         const imgURL = poster_path
           ? `https://image.tmdb.org/t/p/w500${poster_path}`
-          : "https://via.placeholder.com/344x486";
+          : "https://via.placeholder.com/344x486/808080/FFFFFF?text=Sorry,no_image";
         
         const date = (release_date || first_air_date)
           ? (release_date || first_air_date)
