@@ -6,3 +6,4 @@ import './js/renderOpenModal';
 import './js/modalTeamVersion';
 import './js/watchedAndQueueMovies';
 import './js/createMovieCard';
+
