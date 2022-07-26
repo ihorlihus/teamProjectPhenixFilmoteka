@@ -1,5 +1,5 @@
 import { refs } from './refs';
-let darkMode = localStorage.getItem('darkTheme');
+let darkTheme = localStorage.getItem('darkTheme');
 
 const darkThemeToggle = document.querySelector('#dark-theme');
 
