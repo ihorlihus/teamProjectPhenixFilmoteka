@@ -1,6 +1,7 @@
 import { refs } from './refs.js';
 import { createMovieCard } from './libraryMovieCard';
 import { renderLibrary } from './renderLibrary';
+import imgLibrary from '../images/img-library.jpg';
 
 renderLibrary();
 
@@ -20,7 +21,8 @@ export function onWatchedBtnClick() {
     );
     refs.fillerContainer.innerHTML = '';
   } else {
-    refs.fillerContainer.innerHTML = `<p class="fill-text">Your list is empty. Choose a movie.</p>`;
+    refs.fillerContainer.innerHTML = `<p class="fill-text">Your list is empty. Choose a movie.</p>
+    <img class="img__library"src="${imgLibrary}" alt="popcorn"/>`;
   }
 }
 
@@ -37,7 +39,8 @@ export function onQueueBtnClick() {
     );
     refs.fillerContainer.innerHTML = '';
   } else {
-    refs.fillerContainer.innerHTML = `<p class="fill-text">Your list is empty. Choose a movie.</p>`;
+    refs.fillerContainer.innerHTML = `<p class="fill-text">Your list is empty. Choose a movie.</p>
+    <img class="img__library"src="${imgLibrary}" alt="popcorn"/>`;
   }
 }
 
