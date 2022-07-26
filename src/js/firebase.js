@@ -7,6 +7,7 @@ import {
   signInWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
+  onAuthStateChanged,
 } from 'firebase/auth';
 import { refs } from './refs';
 
@@ -29,11 +30,16 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const autent = getAuth();
+//  user is login?
+onAuthStateChanged(autent, user => {
+  if (user) {
+    showUserData(user);
+  }
+});
 //logout a
 refs.logoutButton.addEventListener('click', () => {
   signOut(autent)
     .then(() => {
-      console.log('the user signed out');
       refs.userInfo.classList.add('visually-hidden');
       refs.authButtList.classList.remove('visually-hidden');
     })
@@ -47,12 +53,10 @@ refs.singupForm.addEventListener('submit', e => {
   const password = refs.singupForm.password.value;
   createUserWithEmailAndPassword(autent, email, password)
     .then(cred => {
-      hidenAuthModal();
-      console.log(cred.user);
+      showUserData();
       refs.singupForm.reset();
     })
     .catch(error => {
-      console.log(error.message);
       refs.singupForm.reset();
       alert(error.message);
     });
@@ -65,20 +69,17 @@ refs.loginForm.addEventListener('submit', e => {
   const password = refs.loginForm.password.value;
   signInWithEmailAndPassword(autent, email, password)
     .then(cred => {
-      hidenAuthModal();
-      console.log('user logged in');
-      console.log(cred.user);
+      showUserData();
       refs.loginForm.reset();
     })
     .catch(err => {
-      console.log(err);
       alert(`${err.message}`);
       refs.loginForm.reset();
     });
 });
 // google auth
 const provider = new GoogleAuthProvider();
-provider.addScope('https://www.googleapis.com/auth/cloud-platform.read-only');
+// provider.addScope('https://www.googleapis.com/auth/cloud-platform.read-only');
 function googleAuth(e) {
   e.preventDefault();
   signInWithPopup(autent, provider)
@@ -86,8 +87,7 @@ function googleAuth(e) {
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
       const user = result.user;
-      console.log(result.user);
-      hidenAuthModal(user);
+      showUserData(user);
       refs.loginForm.reset();
       refs.singupForm.reset();
     })
@@ -107,23 +107,27 @@ refs.signupGoogle.addEventListener('click', googleAuth);
 // login open form
 refs.loginOpen.addEventListener('click', e => {
   e.preventDefault();
-  refs.loginForm.classList.toggle('visually-hidden');
-  refs.singupForm.classList.add('visually-hidden');
+  refs.loginDiv.classList.toggle('visually-hidden');
+  refs.singupDiv.classList.add('visually-hidden');
 });
 // signup open form
 refs.signupOpen.addEventListener('click', e => {
   e.preventDefault();
-  refs.singupForm.classList.toggle('visually-hidden');
-  refs.loginForm.classList.add('visually-hidden');
+  refs.singupDiv.classList.toggle('visually-hidden');
+  refs.loginDiv.classList.add('visually-hidden');
 });
 
-function hidenAuthModal(user) {
-  refs.userImg.src = `${user.photoURL}`;
+function showUserData(user) {
+  console.log(user);
+  refs.userImg.src =
+    user.photoURL !== null
+      ? `${user.photoURL}`
+      : 'https://w7.pngwing.com/pngs/81/570/png-transparent-profile-logo-computer-icons-user-user-blue-heroes-logo-thumbnail.png';
+  refs.userName.textContent =
+    user.displayName !== null ? `${user.displayName}` : `${user.email}`;
 
-  refs.userName.textContent = `${user.displayName}`;
   refs.authButtList.classList.add('visually-hidden');
   refs.userInfo.classList.remove('visually-hidden');
-  refs.singupForm.classList.add('visually-hidden');
-  refs.loginForm.classList.add('visually-hidden');
+  refs.singupDiv.classList.add('visually-hidden');
+  refs.loginDiv.classList.add('visually-hidden');
 }
-// console.log(analytics);

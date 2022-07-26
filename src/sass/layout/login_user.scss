@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: row-reverse;
   margin-bottom: 5px;
+  height: 30px;
 }
 .auth_button {
   background-color: #ff6b01;
@@ -90,9 +91,16 @@
   font-size: 14px;
   margin-right: 10px;
 }
+.google__icon {
+  margin-left: 5px;
+}
 .login {
 }
 .logout {
 }
-.login_google {
+.login_google,
+.signup_google {
+  box-sizing: border-box;
+  height: 40px;
+  padding: 10px;
 }
